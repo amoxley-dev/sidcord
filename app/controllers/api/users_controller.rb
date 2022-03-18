@@ -2,8 +2,6 @@ class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     @user.tag = tag_creator
-    # use @user.tag = ****
-    #create a method to get the tag and stringify it
     if @user.save
       login!(@user)
       render :show
@@ -13,10 +11,14 @@ class Api::UsersController < ApplicationController
   end
 
   private
-  #tag creator method
-  # 4.times do
   def tag_creator 
-    
+    tag = '';
+    4.times do
+      int = rand(10)
+      int = int.to_s
+      tag += int
+    end
+    return tag
   end
 
   def user_params
