@@ -11,55 +11,70 @@ class SessionForm extends React.Component {
       errorUsername: '',
       errorPassword: ''
     };
-    
 
     this.handleSubmit = this.handleSubmit.bind(this);
   };
 
   handleSubmit(e) {
-    e.preventDefault();
+    e.preventDefault();    
+
     const subset = (
       ({email, username, password}) => ({email, username, password})
     )(this.state)
-    
-    console.log(this.state);
+
     const user = Object.assign({}, subset);
-    this.props.processForm(user);
+    this.props.processForm(user)
+      .fail(() => this.renderErrors());
   }
 
   update(field) {
     return e => this.setState({[field]: e.currentTarget.value })
   }
 
-  emailError() {
+  emailError(error) {
     if (this.state.email === '') {
-      this.state.errorEmail = ' - This field is required'
-    } 
+      this.setState({errorEmail: ' - This field is required'}) 
+    } else if (error = 'Email has already been taken') {
+      this.setState({errorEmail: ' - This email has already been taken'}) 
+    } else {
+      this.setState({errorEmail: error}) 
+    }
   }
 
-  usernameError() {
+  usernameError(error) {
     if (this.state.username === '') {
-      this.state.errorUsername = ' - This field is required'
-    } 
+      this.setState({errorUsername: ' - This field is required'})
+    } else {
+      this.setState({errorUsername: ' - Must be 2 or more in length'})
+    }
   }
 
-  passwordError() {
-    //display correct error for password
+  passwordError(error) {
     if (this.state.password === '') {
-      this.state.errorPassword = ' - This field is required'
-    } 
+      this.setState({errorPassword: ' - This field is required'})
+    } else if (error === 'Password is too short (minimum is 6 characters)') {
+      this.setState({errorPassword: ' - Must be 6 or more in length'})
+    } else {
+      this.setState({errorPassword: error})
+    }
   }
 
   renderErrors() {
-    // reset errors
-    this.props.errors.map((error, i) => {
+    this.props.errors.map((error) => {
       switch (true) {
         case /Email/.test(error):
-          this.emailError();
+          this.emailError(error);
+          break;
         case /Username/.test(error):
-          this.usernameError();
+          this.usernameError(error);
+          break;
         case /Password/.test(error):
-          this.passwordError();
+          this.passwordError(error);
+          break;
+        default:
+          this.emailError(error);
+          this.passwordError(error);
+          break;
       }
     })
   }
@@ -67,11 +82,9 @@ class SessionForm extends React.Component {
   email() {
     return(
       <label>EMAIL
-        <span
-          onChange={this.renderErrors()}
-        >{this.state.errorEmail}</span>
+        <span className="error-message">{this.state.errorEmail}</span>
         <input 
-          type="text"
+          type="email"
           value={this.state.email}
           onChange={this.update('email')}
         />
@@ -84,9 +97,7 @@ class SessionForm extends React.Component {
     if (this.props.formType === 'signup') {
       return (
         <label>USERNAME
-          <span
-            onChange={this.renderErrors()}
-          >{this.state.errorUsername}</span>
+          <span className="error-message">{this.state.errorUsername}</span>
           <input 
             type="text"
             value={this.state.username}
@@ -100,9 +111,7 @@ class SessionForm extends React.Component {
   password() {
     return (
       <label>PASSWORD
-        <span
-          onChange={this.renderErrors()}
-        >{this.state.errorPassword}</span>
+        <span className="error-message">{this.state.errorPassword}</span>
         <input 
           type="password"
           value={this.state.password}

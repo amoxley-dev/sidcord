@@ -12,7 +12,7 @@
 #  updated_at      :datetime         not null
 #
 class User < ApplicationRecord
-  validates :username, :password_digest, presence: true
+  validates :username, :password_digest, presence: true, length: {minimum: 2}
   validates :email, :session_token, presence: true, uniqueness: true
   validates :tag, presence: true, length: {minimum:4}
   validates :password, length:{minimum:6, allow_nil: true}
