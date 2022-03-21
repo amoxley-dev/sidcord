@@ -33,7 +33,6 @@ class SessionForm extends React.Component {
   }
 
   emailError(error) {
-    console.log(error);
     if (this.state.email === '') {
       this.setState({errorEmail: ' - This field is required'}) 
     } else if (error === 'Email has already been taken') {
@@ -62,6 +61,10 @@ class SessionForm extends React.Component {
   }
 
   renderErrors() {
+    this.state.errorEmail = '';
+    this.state.errorUsername = '';
+    this.state.errorPassword = '';
+
     this.props.errors.map((error) => {
       switch (true) {
         case /Email/.test(error):
@@ -82,8 +85,12 @@ class SessionForm extends React.Component {
   }
 
   email() {
+    let inputClass = '';
+    (this.state.errorEmail.length > 1) ? 
+    inputClass = "input-container input-error" : inputClass = "input-container"
+
     return(
-      <div className="input-container">
+      <div className={inputClass}>
           <label>EMAIL
             <span className="error-message">{this.state.errorEmail}</span>
           </label>
@@ -99,8 +106,12 @@ class SessionForm extends React.Component {
 
   username() {
     if (this.props.formType === 'signup') {
+      let inputClass = '';
+      (this.state.errorUsername.length > 1) ? 
+      inputClass = "input-container input-error" : inputClass = "input-container"
+
       return (
-        <div className="input-container">
+        <div className={inputClass}>
           <label>USERNAME
             <span className="error-message">{this.state.errorUsername}</span>
           </label>
@@ -115,8 +126,12 @@ class SessionForm extends React.Component {
   }
 
   password() {
+    let inputClass = '';
+    (this.state.errorPassword.length > 1) ? 
+    inputClass = "input-container input-error" : inputClass = "input-container"
+
     return (
-      <div className="input-container">
+      <div className={inputClass}>
         <label>PASSWORD
           <span className="error-message">{this.state.errorPassword}</span>
         </label>
