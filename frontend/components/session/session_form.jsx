@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 class SessionForm extends React.Component {
   constructor(props) {
@@ -32,9 +33,10 @@ class SessionForm extends React.Component {
   }
 
   emailError(error) {
+    console.log(error);
     if (this.state.email === '') {
       this.setState({errorEmail: ' - This field is required'}) 
-    } else if (error = 'Email has already been taken') {
+    } else if (error === 'Email has already been taken') {
       this.setState({errorEmail: ' - This email has already been taken'}) 
     } else {
       this.setState({errorEmail: error}) 
@@ -121,14 +123,45 @@ class SessionForm extends React.Component {
     )
   }
 
+  link() {
+    if (this.props.formType === 'signup') {
+      return (
+        <Link to="/login">Already have an account?</Link>
+      )
+    } else {
+      return (
+        <span>Need an account? <Link to="/signup">Register</Link></span>
+      )
+    }
+  }
+
+  formHeader() {
+    if (this.props.formType === 'signup') {
+      return (
+        <div className="form-header">
+          <h3>Create an account</h3>
+        </div>
+      )
+    } else {
+      return (
+        <div className="form-header">
+          <h3>Welcome back!</h3>
+          <div>We're so excited to see you again!</div>
+        </div>
+      )
+    }
+  }
+
   render() {
     return (
       <div className="form-container">
+        {this.formHeader()}
         <form onSubmit={this.handleSubmit} >
           {this.email()}
           {this.username()}
           {this.password()}
           <button type="submit">{this.props.formType}</button>
+          {this.link()}
         </form>
       </div>
     )
