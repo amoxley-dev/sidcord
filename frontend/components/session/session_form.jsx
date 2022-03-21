@@ -83,14 +83,16 @@ class SessionForm extends React.Component {
 
   email() {
     return(
-      <label>EMAIL
-        <span className="error-message">{this.state.errorEmail}</span>
-        <input 
-          type="email"
-          value={this.state.email}
-          onChange={this.update('email')}
-        />
-      </label>
+      <div className="input-container">
+          <label>EMAIL
+            <span className="error-message">{this.state.errorEmail}</span>
+          </label>
+          <input 
+            type="email"
+            value={this.state.email}
+            onChange={this.update('email')}
+          />
+      </div>
     )
   }
 
@@ -98,39 +100,47 @@ class SessionForm extends React.Component {
   username() {
     if (this.props.formType === 'signup') {
       return (
-        <label>USERNAME
-          <span className="error-message">{this.state.errorUsername}</span>
+        <div className="input-container">
+          <label>USERNAME
+            <span className="error-message">{this.state.errorUsername}</span>
+          </label>
           <input 
             type="text"
             value={this.state.username}
             onChange={this.update('username')}
           />
-        </label>
+        </div>
       )
     }
   }
 
   password() {
     return (
-      <label>PASSWORD
-        <span className="error-message">{this.state.errorPassword}</span>
+      <div className="input-container">
+        <label>PASSWORD
+          <span className="error-message">{this.state.errorPassword}</span>
+        </label>
         <input 
           type="password"
           value={this.state.password}
           onChange={this.update('password')}
         />
-      </label>
+      </div>
     )
   }
 
   link() {
     if (this.props.formType === 'signup') {
       return (
-        <Link to="/login">Already have an account?</Link>
+        <div className="session-link-container">
+          <Link to="/login">Already have an account?</Link>
+        </div>
       )
     } else {
       return (
-        <span>Need an account? <Link to="/signup">Register</Link></span>
+        <div className="session-link-container">
+          <span>Need an account? <Link to="/signup">Register</Link></span>
+        </div>
       )
     }
   }
@@ -153,14 +163,17 @@ class SessionForm extends React.Component {
   }
 
   render() {
+    let buttonText =''
+    this.props.formType === 'signup' ? buttonText = 'Continue' : buttonText = 'Login'
+
     return (
       <div className="form-container">
         {this.formHeader()}
-        <form onSubmit={this.handleSubmit} >
+        <form onSubmit={this.handleSubmit} className="session-form">
           {this.email()}
           {this.username()}
           {this.password()}
-          <button type="submit">{this.props.formType}</button>
+          <button type="submit" className="session-button">{buttonText}</button>
           {this.link()}
         </form>
       </div>

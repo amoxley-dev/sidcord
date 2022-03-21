@@ -8,8 +8,9 @@ class Greeting extends React.Component {
 
   navBar() {
     let link = ''
-    this.props.currentUser ? 
-    link = <Link to='/'>Open Discode</Link> : link = <Link to='/login'>Login</Link>
+    let linkText = ''
+    this.props.currentUser ? link = '/' : link = '/login'
+    this.props.currentUser ? linkText = 'Open Sidcord' : linkText = 'Login'
 
     return (
       <nav className="splash-header-container">
@@ -19,7 +20,7 @@ class Greeting extends React.Component {
           <li><a href="#">LinkedIn</a></li>
           <li><a href="#">Portfolio</a></li>
         </ul>
-        <div className=".navbutton">{link}</div>
+        <button className="nav-button" onClick={() => { this.props.history.push(link) }}>{linkText}</button>
       </nav>
     )
   }
