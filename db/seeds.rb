@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+require 'open-uri'
+
 
 ActiveRecord::Base.transaction do
   User.destroy_all
@@ -13,5 +15,9 @@ ActiveRecord::Base.transaction do
   demo = User.create!(email: 'demo@gmail.com', username: 'demo', tag: '0001', password: 'password')
   test1 = User.create!(email: 'test1@gmail.com', username: 'test1', tag: '0002', password: 'password')
   test2 = User.create!(email: 'test2@gmail.com', username: 'test2', tag: '0003', password: 'password')
+
+  file = open('https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png')
+
+  demo.profile_picture.attach(io: file, filename: 'some_file.jpg')
 
 end

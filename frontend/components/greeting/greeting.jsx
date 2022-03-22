@@ -31,6 +31,7 @@ class Greeting extends React.Component {
         <hgroup className="header-group">
             <h2 className="header-name">Hi, {this.props.currentUser.username}!</h2>
             <button className="header-button" onClick={this.props.logout}>Log Out</button>
+            <img src={this.props.currentUser.profilePicUrl} alt="profile picture" />
         </hgroup>
       )
     }
