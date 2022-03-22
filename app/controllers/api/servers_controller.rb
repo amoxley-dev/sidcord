@@ -22,7 +22,7 @@ class Api::ServersController < ApplicationController
   def update
     @server = Server.find(params[:id])
     if @server.update(server_params)
-      render: show
+      render :show
     else
       render json: @server.errors.full_messages, status: 422
     end

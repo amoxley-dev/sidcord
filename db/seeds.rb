@@ -24,4 +24,9 @@ ActiveRecord::Base.transaction do
   test1.profile_picture.attach(io: default_profile2, filename: 'blue_icon.png')
   test2.profile_picture.attach(io: default_profile3, filename: 'blue_icon.png')
 
+  server_1 = Server.create!(server_name: 'Demo Server', public: true, owner_id: 1)
+  server_2 = Server.create!(server_name: 'Anonymous Server', public: false, owner_id: 1)
+  server_3 = Server.create!(server_name: 'Straw Hat\'s Server', public: true, owner_id: 2)
+  server_3 = Server.create!(server_name: 'Baki Server', public: true, owner_id: 2)
+  server_4 = Server.create!(server_name: 'Oliver Tree Fans', public: true, owner_id: 3)
 end
