@@ -1,6 +1,11 @@
+require 'open-uri'
+
 class Api::UsersController < ApplicationController
   def create
     @user = User.new(user_params)
+    default_profile = open('https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png')
+    @user.profile_picture.attach(io: default_profile, filename: 'icon_blue.png')
+    
     @user.tag = tag_creator
     if @user.save
       login!(@user)
