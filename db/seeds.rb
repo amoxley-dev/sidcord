@@ -16,10 +16,12 @@ ActiveRecord::Base.transaction do
   test1 = User.create!(email: 'test1@gmail.com', username: 'test1', tag: '0002', password: 'password')
   test2 = User.create!(email: 'test2@gmail.com', username: 'test2', tag: '0003', password: 'password')
 
-  default_profile = open('https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png')
+  default_profile1 = open('https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png')
+  default_profile2 = open('https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png')
+  default_profile3 = open('https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png')
 
-  demo.profile_picture.attach(io: default_profile, filename: 'blue_icon.png')
-  test1.profile_picture.attach(io: default_profile, filename: 'blue_icon.png')
-  test2.profile_picture.attach(io: default_profile, filename: 'blue_icon.png')
+  demo.profile_picture.attach(io: default_profile1, filename: 'blue_icon.png')
+  test1.profile_picture.attach(io: default_profile2, filename: 'blue_icon.png')
+  test2.profile_picture.attach(io: default_profile3, filename: 'blue_icon.png')
 
 end

@@ -31,6 +31,4 @@ document.addEventListener("DOMContentLoaded", () => {
   // Test End
 
   ReactDOM.render(<Root store={store}/>, root);
-
-  //git working
 })
