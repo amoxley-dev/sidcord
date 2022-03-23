@@ -1,5 +1,4 @@
 html, body {
-  max-width: 100%;
   background: #404eed;
 }
 
@@ -23,7 +22,7 @@ html, body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  height: 80vh;
+  height: 100%;
   padding: 120px 0px;
   color: white;
   text-rendering: optimizeLegibility;

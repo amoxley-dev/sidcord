@@ -1,15 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-class Greeting extends React.Component {
+class Splash extends React.Component {
   constructor(props) {
     super(props)
   }
 
   navBar() {
-    let link = ''
     let linkText = ''
-    this.props.currentUser ? link = '/' : link = '/login'
     this.props.currentUser ? linkText = 'Open Sidcord' : linkText = 'Login'
 
     return (
@@ -20,7 +18,7 @@ class Greeting extends React.Component {
           <li><a href="#">LinkedIn</a></li>
           <li><a href="#">Portfolio</a></li>
         </ul>
-        <button className="nav-button" onClick={() => { this.props.history.push(link) }}>{linkText}</button>
+        <button className="nav-button" onClick={() => { this.props.history.push('/login') }}>{linkText}</button>
       </nav>
     )
   }
@@ -61,4 +59,4 @@ class Greeting extends React.Component {
   }
 }
 
-export default Greeting;
+export default Splash;

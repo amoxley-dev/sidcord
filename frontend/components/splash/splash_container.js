@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import { logout } from "../../actions/session_actions";
-import Greeting from "./greeting";
+import Splash from "./Splash";
 
 const mapStateToProps = state => {
   return {
@@ -15,4 +15,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Greeting);
+export default connect(mapStateToProps, mapDispatchToProps)(Splash);
