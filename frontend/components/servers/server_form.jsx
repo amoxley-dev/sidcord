@@ -1,15 +1,11 @@
 import React from "react";
 
 class ServerForm extends React.Component {
-  constructor(props) {
-    super(props)
-  }
-
   render() {
     return (
-      <h1>Server Form Connected</h1>
+      <h3>Create a server</h3>
     )
   }
 }
 
-export default ServerForm
+export default ServerForm;

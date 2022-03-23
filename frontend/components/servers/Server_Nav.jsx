@@ -15,7 +15,7 @@ class ServerNav extends React.Component {
     return (
       <div className="server-nav-container">
         <div className="server-nav-bar-container">
-          <div className="server-nav-button"></div>
+          <div className="server-nav-button server-nav-icon-button"><i className="fab fa-discord"></i></div>
           <div className="seperator"></div>
           <ul>
             {
@@ -33,7 +33,7 @@ class ServerNav extends React.Component {
           <div className="seperator"></div>
           <div 
             className="server-nav-button create-server-button" 
-            onClick={() => { this.props.history.push('/servers/create') }}
+            onClick={() => this.props.openModal('serverForm')}
           ><svg 
             aria-hidden="false" 
             width="24" 
