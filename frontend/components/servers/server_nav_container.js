@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import { fetchServers, fetchServer } from "../../actions/server_actions";
-import { fetchCurrentUser } from "../../actions/session_actions";
+import { fetchCurrentUser, logout } from "../../actions/session_actions";
 import ServerNav from "./Server_Nav";
 import { openModal } from "../../actions/modal_actions";
 
@@ -17,6 +17,7 @@ const mapDispatchToProps = dispatch => {
     fetchServers: () => dispatch(fetchServers()),
     fetchServer: serverId => dispatch(fetchServer(serverId)),
     fetchCurrentUser: userId => dispatch(fetchCurrentUser(userId)),
+    logout: () => dispatch(logout()),
     openModal: modal => dispatch(openModal(modal))
   };
 };

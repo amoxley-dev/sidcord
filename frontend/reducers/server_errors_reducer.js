@@ -1,3 +1,4 @@
+import { OPEN_MODAL } from "../actions/modal_actions";
 import { 
   RECEIVE_SERVER_ERRORS, 
   RECEIVE_SERVER,
@@ -12,6 +13,8 @@ const serverErrorsReducer = (state=[], action) => {
     case RECEIVE_SERVER:
       return [];
     case REMOVE_SERVER:
+      return [];
+    case OPEN_MODAL:
       return [];
     default:
       return state;

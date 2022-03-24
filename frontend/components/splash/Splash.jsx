@@ -23,24 +23,11 @@ class Splash extends React.Component {
     )
   }
 
-  personalGreeting() {
-    if (this.props.currentUser) {
-      return (
-        <hgroup className="header-group">
-            <h2 className="header-name">Hi, {this.props.currentUser.username}!</h2>
-            <button className="header-button" onClick={this.props.logout}>Log Out</button>
-            <img src={this.props.currentUser.profilePicUrl} alt="profile picture" />
-        </hgroup>
-      )
-    }
-  }
-
   render() {
     return (
       <div className="splash">
         <header>
           {this.navBar()}
-          {this.personalGreeting()}
         </header>
         <main>
           <div className="splash-main-content">

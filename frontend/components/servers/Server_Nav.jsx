@@ -54,6 +54,7 @@ class ServerNav extends React.Component {
           <div>mute</div>
           <div>deafen</div>
         </div>
+        <button className="header-button" onClick={this.props.logout}>Log Out</button>
       </div>
     )
   }

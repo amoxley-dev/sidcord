@@ -3,10 +3,12 @@ import React from "react";
 class ServerCreateForm extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props)
+
+    const serverName = `${props.currentUser.username}'s server`
+
     this.state = {
-      server_name: '',
-      public: this.props.serverPublic,
+      server_name: serverName,
+      public: props.serverPublic,
     }
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -15,8 +17,9 @@ class ServerCreateForm extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
 
-    this.props.closeModal();
-    this.props.createServer(this.state);
+    this.props.createServer(this.state)
+      .then(() => this.props.closeModal())
+      // .fail(() => this.);
   }
 
   update() {
@@ -24,6 +27,9 @@ class ServerCreateForm extends React.Component {
   }
 
   render() {
+    let errorMessage
+    (this.props.errors.length > 0) ? errorMessage = 'Must be between 2 and 100 in length' : '';
+    
     return (
       <form className="server-create-container" onSubmit={this.handleSubmit}>
         <div className="server-create-header">
@@ -35,6 +41,7 @@ class ServerCreateForm extends React.Component {
         </div>
 
         <div className="server-create-content">
+          <div>{errorMessage}</div>
           <label>SERVER NAME
             <input 
               type="text"
