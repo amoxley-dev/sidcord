@@ -49,24 +49,26 @@ class ServerCreateForm extends React.Component {
 
         <div className="server-create-content">
           <div>{errorMessage}</div>
-          <label>SERVER NAME
+          <div className="server-create-input">
+            <label>SERVER NAME</label>
             <input 
               type="text"
               value={this.state.server_name}
               onChange={this.update()}
             />
-          </label>
+          </div>
           <div className="server-disclaimer">
-            By creating a server, you agree to Discord's<span>Community Guidelines</span>
+            By creating a server, you agree to Discord's <span><a className="server-modal-link-text" href="https://discord.com/guidelines">Community Guidelines</a></span>
           </div>
         </div>
-
-        <button
-          type="button"
-          onClick={() => this.props.openModal('serverPublicForm')}
-          className="server-create-back-button"
-        >Back</button>
-        <button type="submit">Create</button>
+        <div className="server-create-footer">
+          <div
+            type="button"
+            onClick={() => this.props.openModal('serverPublicForm')}
+            className="server-modal-back-button"
+          >Back</div>
+          <button type="submit">Create</button>
+        </div>
       </form>
 
       
