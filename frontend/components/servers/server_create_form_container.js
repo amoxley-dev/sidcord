@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 
 import { createServer, fetchServer } from "../../actions/server_actions";
 import ServerCreateForm from "./server_create_form";
-import { closeModal } from "../../actions/modal_actions";
+import { openModal, closeModal } from "../../actions/modal_actions";
 
 
 
@@ -16,7 +16,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = dispatch => {
   return {
     createServer: server => dispatch(createServer(server)),
-    closeModal: () => dispatch(closeModal)
+    closeModal: () => dispatch(closeModal()),
+    openModal: modal => dispatch(openModal(modal))
   }
 }
 
