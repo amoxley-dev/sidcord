@@ -19,7 +19,6 @@ class ServerCreateForm extends React.Component {
 
     this.props.createServer(this.state)
       .then(() => this.props.closeModal())
-      // .fail(() => this.);
   }
 
   update() {
@@ -29,9 +28,17 @@ class ServerCreateForm extends React.Component {
   render() {
     let errorMessage
     (this.props.errors.length > 0) ? errorMessage = 'Must be between 2 and 100 in length' : '';
-    
+
     return (
-      <form className="server-create-container" onSubmit={this.handleSubmit}>
+      <form className="server-create-container modal-white" onSubmit={this.handleSubmit}>
+        <svg 
+          className="close-button"
+          width="24"
+          height="24" 
+          viewBox="0 0 24 24"
+          onClick={() => this.props.closeModal()}
+        ><path fill="currentColor" d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z"></path>
+        </svg>
         <div className="server-create-header">
           <h3>Customize your server</h3>
           <div>

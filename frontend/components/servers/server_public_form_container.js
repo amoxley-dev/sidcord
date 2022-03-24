@@ -10,7 +10,7 @@ import { openModal, closeModal } from "../../actions/modal_actions";
 const mapDispatchToProps = dispatch => {
   return {
     openModal: modal => dispatch(openModal(modal)),
-    closeModal: () => dispatch(closeModal)
+    closeModal: () => dispatch(closeModal())
   }
 }
 

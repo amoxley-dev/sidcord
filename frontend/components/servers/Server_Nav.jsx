@@ -32,7 +32,7 @@ class ServerNav extends React.Component {
           </ul>
           <div className="seperator"></div>
           <div 
-            className="server-nav-button create-server-button" 
+            className="server-nav-button server-misc-button" 
             onClick={() => this.props.openModal('serverForm')}
           ><svg 
             aria-hidden="false" 
@@ -43,7 +43,7 @@ class ServerNav extends React.Component {
               fill="currentColor" 
               d="M20 11.1111H12.8889V4H11.1111V11.1111H4V12.8889H11.1111V20H12.8889V12.8889H20V11.1111Z"
               ></path></svg></div>
-          <div className="server-nav-button">find a public server</div>
+          <div className="server-nav-button server-misc-button"><i className="fas fa-compass"></i></div>
         </div>
         <div className="user-info-container">
           <img src={this.props.currentUser.profilePicUrl} alt="profile picture" />
