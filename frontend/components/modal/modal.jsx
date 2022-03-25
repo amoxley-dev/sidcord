@@ -9,7 +9,6 @@ import ServerCreateFormContainer from '../servers/server_create_form_container';
 class Modal extends React.Component {
   constructor(props) {
     super(props)
-    console.log(props)
     this.state = {
       serverPublic: false
     }

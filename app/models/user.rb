@@ -22,9 +22,19 @@ class User < ApplicationRecord
 
   has_one_attached :profile_picture
 
-  has_many :servers,
+  has_many :owned_servers,
     foreign_key: :owner_id,
-    class_name: :Server
+    class_name: :Server,
+    dependent: :destroy
+
+  has_many :server_memberships,
+    foreign_key: :user_id,
+    class_name: :ServerMembership,
+    dependent: :destroy
+
+  has_many :servers,
+    through: :server_memberships,
+    source: :server
 
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)

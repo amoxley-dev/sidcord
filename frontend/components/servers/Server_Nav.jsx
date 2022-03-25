@@ -12,6 +12,11 @@ class ServerNav extends React.Component {
   }
 
   render() {
+    let profilePicUrl
+    (this.props.currentUser.profilePicUrl === '') ? 
+    profilePicUrl = 'https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png' :
+    profilePicUrl = this.props.currentUser.profilePicUrl
+
     return (
       <div className="server-nav-container">
         <div className="server-nav-bar-container">
@@ -46,7 +51,7 @@ class ServerNav extends React.Component {
           <div className="server-nav-button server-misc-button"><i className="fas fa-compass"></i></div>
         </div>
         <div className="user-info-container">
-          <img src={this.props.currentUser.profilePicUrl} alt="profile picture" />
+          <img src={profilePicUrl} alt="profile picture" />
           <div className="user-handle">
             <div className="user-username">{this.props.currentUser.username}</div>
             <div className="user-tag">{this.props.currentUser.tag}</div>
