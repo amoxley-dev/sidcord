@@ -5,15 +5,13 @@ import { Link } from "react-router-dom";
 class ServerNav extends React.Component {
   constructor(props) {
     super(props)
-
-    const servers = this.props.currentUser.servers
-    // console.log(this.props.servers)
   }
 
   componentDidMount() {
-    this.props.currentUser.servers.map(serverId => {
-      return this.props.fetchServer(serverId)
-    })
+    this.props.fetchServers();
+    // this.props.currentUser.servers.map(serverId => {
+    //   return this.props.fetchServer(serverId)
+    // })
   }
 
   render() {
@@ -53,7 +51,7 @@ class ServerNav extends React.Component {
               fill="currentColor" 
               d="M20 11.1111H12.8889V4H11.1111V11.1111H4V12.8889H11.1111V20H12.8889V12.8889H20V11.1111Z"
               ></path></svg></div>
-          <div className="server-nav-button server-misc-button"><i className="fas fa-compass"></i></div>
+          <div className="server-nav-button server-misc-button" onClick={() => this.props.openModal('serverIndex')}><i className="fas fa-compass"></i></div>
         </div>
         <div className="server-info-container">
           <div className="user-options-container">

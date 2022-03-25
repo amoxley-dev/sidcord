@@ -2,7 +2,7 @@
 var path = require('path');
 
 module.exports = {
-    entry: './frontend/sidcord.jsx',
+    entry: ["regenerator-runtime/runtime.js", "./frontend/sidcord.jsx"],
     output: {
         path: path.resolve(__dirname, 'app', 'assets', 'javascripts'),
         filename: './bundle.js',

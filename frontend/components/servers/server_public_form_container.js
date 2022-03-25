@@ -3,10 +3,6 @@ import { connect } from "react-redux";
 import ServerPublicForm from "./server_public_form";
 import { openModal, closeModal } from "../../actions/modal_actions";
 
-// const mapStateToProps = state => {
-
-// }
-
 const mapDispatchToProps = dispatch => {
   return {
     openModal: modal => dispatch(openModal(modal)),

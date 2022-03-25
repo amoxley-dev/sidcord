@@ -179,7 +179,7 @@ class SessionForm extends React.Component {
 
   demoUser() {
     if (this.props.formType === 'login') {
-      return <button type="button" className="session-button" id="demo-button" onClick={() => this.setState({email: 'demo@gmail.com', password: 'password'})}>Demo Login</button>
+      return <button type="submit" className="session-button" id="demo-button" onClick={() => this.setState({email: 'demo@gmail.com', password: 'password'})}>Demo Login</button>
     } else {
       return null
     }

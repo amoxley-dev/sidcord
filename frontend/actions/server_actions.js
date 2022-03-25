@@ -11,6 +11,7 @@ const receiveServers = servers => {
     servers: servers
   };
 };
+
 const receiveServer = server => {
   return {
     type: RECEIVE_SERVER,
