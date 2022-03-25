@@ -20,6 +20,14 @@ ActiveRecord::Base.transaction do
   server_1 = Server.create!(server_name: 'Demo Server', public: true, owner_id: 1)
   server_2 = Server.create!(server_name: 'Anonymous Server', public: false, owner_id: 1)
   server_3 = Server.create!(server_name: 'Straw Hat\'s Server', public: true, owner_id: 2)
-  server_3 = Server.create!(server_name: 'Baki Server', public: true, owner_id: 2)
-  server_4 = Server.create!(server_name: 'Oliver Tree Fans', public: true, owner_id: 3)
+  server_4 = Server.create!(server_name: 'Baki Server', public: true, owner_id: 2)
+  server_5 = Server.create!(server_name: 'Oliver Tree Fans', public: true, owner_id: 3)
+
+  server_membership_1 = ServerMembership.create!( user_id: demo.id, server_id: server_1.id)
+  server_membership_2 = ServerMembership.create!( user_id: demo.id, server_id: server_2.id)
+  server_membership_3 = ServerMembership.create!( user_id: test1.id, server_id: server_3.id)
+  server_membership_4 = ServerMembership.create!( user_id: test1.id, server_id: server_4.id)
+  server_membership_5 = ServerMembership.create!( user_id: test2.id, server_id: server_5.id)
+  server_membership_1 = ServerMembership.create!( user_id: demo.id, server_id: server_3.id)
+  server_membership_6 = ServerMembership.create!( user_id: test1.id, server_id: server_2.id)
 end

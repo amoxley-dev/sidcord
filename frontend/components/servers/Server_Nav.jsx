@@ -5,10 +5,15 @@ import { Link } from "react-router-dom";
 class ServerNav extends React.Component {
   constructor(props) {
     super(props)
+
+    const servers = this.props.currentUser.servers
+    // console.log(this.props.servers)
   }
 
   componentDidMount() {
-    this.props.fetchServers()
+    this.props.currentUser.servers.map(serverId => {
+      return this.props.fetchServer(serverId)
+    })
   }
 
   render() {

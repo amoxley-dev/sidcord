@@ -40,7 +40,7 @@ export const fetchServers = () => dispatch => {
     ));
 };
 
-export const fetchServer = serverId => {
+export const fetchServer = serverId => dispatch => {
   return APIUtil.fetchServer(serverId)
     .then(server => (dispatch(receiveServer(server))
     ), err => (

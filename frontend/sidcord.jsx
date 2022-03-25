@@ -1,7 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
-import { fetchServers, fetchServer, createServer, editServer, deleteServer } from "./util/server_api_util";
+import { fetchServers, fetchServer, createServer, editServer, deleteServer } from "./actions/server_actions";
+import { createServerMembership, deleteServerMembership } from "./util/server_membership_api_util";
 import configureStore from "./store/store"
 import Root from "./components/Root"
 
@@ -27,6 +28,8 @@ document.addEventListener("DOMContentLoaded", () => {
   window.createServer = createServer;
   window.editServer = editServer;
   window.deleteServer = deleteServer;
+  window.createServerMembership = createServerMembership;
+  window.deleteServerMembership = deleteServerMembership;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   // Test End
