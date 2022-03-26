@@ -7,17 +7,17 @@ import { openModal } from "../../actions/modal_actions";
 
 const currentUserServers = state => {
   if (Object.keys(state.entities.servers).length === 0) return [];
-  // let serversSlice
   return state.entities.users[state.session.id].servers.map(serverId => (
     state.entities.servers[serverId]
   ))
-  // return serversSlice
 }
 
 const mapStateToProps = state => {
   return {
     currentUser: state.entities.users[state.session.id],
-    servers: currentUserServers(state)
+    servers: currentUserServers(state),
+    allServers: state.entities.servers,
+    serversId: state.entities.users[state.session.id].ids
   };
 };
 

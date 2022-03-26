@@ -1,4 +1,4 @@
-export const createServerMembership = membership => {
+export const createServerMembership = server_membership => {
   return $.ajax({
       url: `/api/server_memberships`,
       method: 'POST',
@@ -6,9 +6,9 @@ export const createServerMembership = membership => {
     })
 };
 
-export const deleteServerMembership = membership => {
+export const deleteServerMembership = server_membership => {
   return $.ajax({
-      url: `/api/server_memberships/${membership.id}`,
+      url: `/api/server_memberships/${server_membership.id}`,
       method: 'DELETE',
       data: { server_membership }
     })

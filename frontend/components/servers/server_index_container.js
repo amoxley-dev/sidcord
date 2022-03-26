@@ -4,6 +4,7 @@ import 'regenerator-runtime/runtime'
 import ServerIndex from "./server_index"
 import { closeModal } from "../../actions/modal_actions"
 import { fetchServers } from "../../actions/server_actions"
+import { createServerMembership } from "../../actions/server_membership_actions"
 
 const allPublicServers = state => {
   if (Object.keys(state.entities.servers).length === 0) return [];
@@ -26,13 +27,13 @@ const allPublicServers = state => {
       return publicServers.push(state.entities.servers[parseInt(serverId)])
     }
   });
-    
-  // console.log(publicServers)
+
   return publicServers
 }
 
 const mapStateToProps = state => {
   return {
+    currentUser: state.entities.users[state.session.id],
     servers: allPublicServers(state)
   }
 }
@@ -40,7 +41,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     closeModal: () => dispatch(closeModal()),
-    fetchServers: () => dispatch(fetchServers())
+    fetchServers: () => dispatch(fetchServers()),
+    createServerMembership: membership => dispatch(createServerMembership(membership))
   }
 }
 

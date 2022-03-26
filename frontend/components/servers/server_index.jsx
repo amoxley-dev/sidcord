@@ -1,23 +1,19 @@
 import React from "react";
-import { fetchServers } from "../../util/server_api_util"
 
 class ServerIndex extends React.Component {
   constructor(props) {
     super(props)
-    
   }
 
   componentDidMount() {
     this.props.fetchServers()
   }
 
-  // async selectPublicServers() {
-  //   let allServers
-  //   await fetchServers()
-  //           .then(servers => allServers = servers)
-  //   console.log(allServers)
-  //   return allServers
-  // }
+  handleClick(serverId) {
+    const membership = { user_id: this.props.currentUser.id, server_id: serverId }
+    this.props.createServerMembership(membership);
+    this.props.closeModal();
+  }
 
   render() {
     return (
@@ -26,7 +22,22 @@ class ServerIndex extends React.Component {
         <ul>
           {
             this.props.servers.map(server => (
-              server.server_name
+              <div 
+                className="server-button-container" 
+                onClick={() => this.handleClick(server.id)}
+                key={server.id}
+              >
+                <div className="server-button-image-text">
+                  {/* <img 
+                    src="https://sidcord-dev.s3.us-west-1.amazonaws.com/private_server_icon.png" 
+                    alt="create-server-icon"
+                    className="server-form-icon"
+                  /> */}
+                  <div>
+                    {server.server_name}
+                  </div>
+                </div>
+              </div>
             ))
           }
         </ul>

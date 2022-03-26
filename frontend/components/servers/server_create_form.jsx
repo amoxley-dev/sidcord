@@ -16,8 +16,12 @@ class ServerCreateForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
+    
     this.props.createServer(this.state)
+      .then(serverId => {
+        let membership = { user_id: this.props.currentUser.id, server_id: serverId };
+        this.props.createServerMembership(membership);
+      })
       .then(() => this.props.closeModal())
   }
 

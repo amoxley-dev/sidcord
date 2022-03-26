@@ -9,9 +9,6 @@ class ServerNav extends React.Component {
 
   componentDidMount() {
     this.props.fetchServers();
-    // this.props.currentUser.servers.map(serverId => {
-    //   return this.props.fetchServer(serverId)
-    // })
   }
 
   render() {
