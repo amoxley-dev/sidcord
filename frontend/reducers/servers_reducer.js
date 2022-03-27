@@ -8,11 +8,12 @@ const serversReducer = (state={}, action) => {
     case RECEIVE_SERVERS: 
       return Object.assign({}, action.servers)
     case RECEIVE_SERVER:
+      console.log(action);
       const newServer = { [action.server.id]: action.server };
       return Object.assign({}, state, newServer);
     case REMOVE_SERVER: 
       const newState = Object.assign({}, state);
-      delete newState[action.serverId];
+      delete newState[action.server.id];
       return newState
     case LOGOUT_CURRENT_USER:
       return {}

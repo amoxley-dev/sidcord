@@ -19,10 +19,10 @@ const receiveServer = server => {
   };
 };
 
-const removeServer = serverId => {
+const removeServer = server => {
   return {
     type: REMOVE_SERVER,
-    serverId: serverId
+    server: server
   };
 };
 
@@ -69,7 +69,7 @@ export const editServer = server => dispatch => {
 
 export const deleteServer = serverId => dispatch => {
   return APIUtil.deleteServer(serverId)
-    .then(() => (dispatch(removeServer(serverId))
+    .then(server => (dispatch(removeServer(server))
     ), err => (
       dispatch(receiveErrors(err.responseJSON))
     ));

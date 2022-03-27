@@ -43,7 +43,7 @@ class ServerForm extends React.Component {
         </div>
         <div className="server-form-footer">
           <div 
-            onClick={() => this.props.openModal('serverForm')}
+            onClick={() => this.props.openModal('serverIndex')}
             className="server-form-find-button"
           >Join a Server</div>
         </div>

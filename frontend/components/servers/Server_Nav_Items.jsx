@@ -10,7 +10,7 @@ const ServerNavItems = props => {
   ))
 
   return (
-    <div className="server-nav-button" onClick={() => { props.history.push('/servers') }}>{serverInitial}</div>
+    <div className="server-nav-button" onClick={() => { props.history.push(`/channels/${props.server.id}/1`) }}>{serverInitial}</div>
   )
 }
 

@@ -10,10 +10,10 @@ const receiveServerMembership = membership => {
   };
 };
 
-const removeServerMembership = membership => {
+const removeServerMembership = user => {
   return {
     type: REMOVE_SERVER_MEMBERSHIP,
-    membership: membership
+    user: user
   };
 };
 
@@ -24,6 +24,6 @@ export const createServerMembership = membership => dispatch => {
 
 export const deleteServerMembership = membership => dispatch => {
   ServerMembershipApiUtil.deleteServerMembership(membership)
-    .then(() => dispatch(removeServerMembership(membership)))
+    .then(user => dispatch(removeServerMembership(user)))
 }
 

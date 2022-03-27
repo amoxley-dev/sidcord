@@ -1,0 +1,76 @@
+.server-info-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 240px;
+  font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+}
+
+.server-info-header {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.user-options-container {
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 8px;
+  margin-bottom: 1px;
+  background-color: #292b2f;
+  width: 240px;
+  box-sizing: border-box;
+}
+
+.user-info-container {
+  display: flex;
+}
+
+.user-info-container > img {
+  height: 32px;
+  width: 32px;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+
+.user-handle {
+  display: flex;
+  flex-direction: column;
+  margin-right: 4px;
+}
+
+.user-username {
+  color: white;
+  line-height: 18px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.user-tag {
+  color: #b9bbbe;
+  line-height: 13px;
+  font-size: 12px;
+}
+
+.user-icon-container {
+  display: flex;
+}
+
+.user-options-icon {
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  color: #b9bbbe;
+}
+
+.user-options-icon:hover {
+  color: #dcddde;
+  background-color: rgba(79, 84, 92, 0.32);
+}

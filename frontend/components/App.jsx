@@ -12,19 +12,27 @@ import SplashContainer from "./splash/splash_container";
 import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import ServerNavContainer from "./servers/server_nav_container";
-import ServerFormContainer from "./servers/server_create_form_container";
+import ServerInfoContainer from "./servers/server_info_container";
 
 
 const App = () => (
   <div id='app'>
     <Route path='/' component={modal}></Route>
+    <ProtectedRoute path="/channels" component={ServerNavContainer}/>
+
     <Switch>
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
-      <ProtectedRoute path="/servers/create" component={ServerFormContainer} />
+      <ProtectedRoute 
+                exact path="/channels/@me" 
+                component={ServerInfoContainer} 
+            />
+      <ProtectedRoute 
+                exact path="/channels/:serverId/:channelId" 
+                component={ServerInfoContainer} 
+            />
       <Route exact path="/" component={SplashContainer} />
     </Switch>
-    <ProtectedRoute path="/servers" component={ServerNavContainer}/> 
   </div>
 
 );
