@@ -13,23 +13,21 @@ import LoginFormContainer from "./session/login_form_container";
 import SignupFormContainer from "./session/signup_form_container";
 import ServerNavContainer from "./servers/server_nav_container";
 import ServerInfoContainer from "./servers/server_info_container";
-
+import ChannelContainer from "./channels/channel_container";
 
 const App = () => (
   <div id='app'>
     <Route path='/' component={modal}></Route>
     <ProtectedRoute path="/channels" component={ServerNavContainer}/>
+    <ProtectedRoute path="/channels/:serverId/:channelId" component={ServerInfoContainer}/>
 
     <Switch>
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
-      <ProtectedRoute 
-                exact path="/channels/@me" 
-                component={ServerInfoContainer} 
-            />
+      <ProtectedRoute path="/channels/@me" component={ServerInfoContainer} />
       <ProtectedRoute 
                 exact path="/channels/:serverId/:channelId" 
-                component={ServerInfoContainer} 
+                component={ChannelContainer} 
             />
       <Route exact path="/" component={SplashContainer} />
     </Switch>

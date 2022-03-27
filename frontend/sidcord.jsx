@@ -1,6 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom";
 
+import { fetchUser } from "./actions/user_actions";
 import { fetchServers, fetchServer, createServer, editServer, deleteServer } from "./actions/server_actions";
 import { createServerMembership, deleteServerMembership } from "./util/server_membership_api_util";
 import configureStore from "./store/store"
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 
   // Test Begins
+  window.fetchUser = fetchUser;
   window.fetchServers = fetchServers;
   window.fetchServer = fetchServer;
   window.createServer = createServer;
