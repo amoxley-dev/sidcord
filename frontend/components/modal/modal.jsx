@@ -6,6 +6,7 @@ import ServerFormContainer from '../servers/server_form_container';
 import ServerPublicContainer from '../servers/server_public_form_container';
 import ServerCreateFormContainer from '../servers/server_create_form_container';
 import ServerIndexContainer from '../servers/server_index_container';
+import UserOptions from '../user/user_options_container';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -47,6 +48,9 @@ class Modal extends React.Component {
         break;
       case 'serverIndex':
         component = <ServerIndexContainer />
+        break;
+      case 'userOptions':
+        component = <UserOptions />
         break;
       default:
         return null;

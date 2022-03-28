@@ -16,10 +16,10 @@ class ServerNav extends React.Component {
   }
 
   render() {
-    let profilePicUrl
-    (this.props.currentUser.profilePicUrl === '') ? 
-    profilePicUrl = 'https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png' :
-    profilePicUrl = this.props.currentUser.profilePicUrl
+    // let profilePicUrl
+    // (this.props.currentUser.profilePicUrl === '') ? 
+    // profilePicUrl = 'https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png' :
+    // profilePicUrl = this.props.currentUser.profilePicUrl
     
     return (
       <div className="server-nav-container">
@@ -55,7 +55,7 @@ class ServerNav extends React.Component {
               ></path></svg></div>
           <div className="server-nav-button server-misc-button" onClick={() => this.props.openModal('serverIndex')}><i className="fas fa-compass"></i></div>
         </div>
-        <button className="logout-button" onClick={this.props.logout}>Log Out</button>
+        {/* <button className="logout-button" onClick={this.props.logout}>Log Out</button> */}
       </div>
     )
   }

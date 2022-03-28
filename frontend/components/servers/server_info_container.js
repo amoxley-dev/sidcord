@@ -4,6 +4,7 @@ import { fetchCurrentUser, logout } from "../../actions/session_actions";
 import { fetchServers, fetchServer, deleteServer } from "../../actions/server_actions";
 import { deleteServerMembership } from "../../actions/server_membership_actions";
 import ServerInfo from "./server_info";
+import { openModal } from "../../actions/modal_actions";
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -21,7 +22,8 @@ const mapDispatchToProps = dispatch => {
     fetchServers: () => dispatch(fetchServers()),
     fetchServer: serverId => dispatch(fetchServer(serverId)),
     deleteServer: serverId => dispatch(deleteServer(serverId)),
-    deleteServerMembership: membership => dispatch(deleteServerMembership(membership))
+    deleteServerMembership: membership => dispatch(deleteServerMembership(membership)),
+    openModal: modal => dispatch(openModal(modal))
   }
 }
 

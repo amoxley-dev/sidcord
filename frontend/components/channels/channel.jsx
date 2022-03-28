@@ -13,23 +13,37 @@ class Channel extends React.Component {
     if (!this.props.channel) return null
 
     return (
-      <div>
-        <div>{this.props.channel.channel_name}</div>
-        <div>Messages container</div>
+      <div className="channel-container">
+        <div className="channel-header">
+          <div>{this.props.channel.channel_name}</div>
+        </div>
 
-        <div className="users-list">
-          <div>Members - {this.props.users.length}</div>
-          <ul>
-            {
-              this.props.users.map(user => {
-                return (
-                  <div key={user.id}>
-                    <div>{user.username}</div>
-                  </div>
-                )
-              })
-            }
-          </ul>
+        <div className="channel-content-container">
+          <div className="messages-container">
+            <div className="messages-body">
+              messages body
+            </div>
+            <div className="message-input-container">Message inupt container</div>
+          </div>
+          <div className="users-list-container">
+            <div>Members - {this.props.users.length}</div>
+            <ul className="users-list">
+              {
+                this.props.users.map(user => {
+                  let profilePicUrl
+                  (user.profilePicUrl === '') ? 
+                  profilePicUrl = 'https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png' :
+                  profilePicUrl = user.profilePicUrl
+                  return (
+                    <div key={user.id} className="server-user-info">
+                      <img src={profilePicUrl} alt="profile picture" />
+                      <div>{user.username}</div>
+                    </div>
+                  )
+                })
+              }
+            </ul>
+          </div>
         </div>
       </div>
     )
