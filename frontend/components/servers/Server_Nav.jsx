@@ -8,7 +8,11 @@ class ServerNav extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchServers();
+    // this.props.fetchServers();
+
+    this.props.currentUser.servers.map(serverId => {
+      this.props.fetchServer(serverId)
+    })
   }
 
   render() {
@@ -16,7 +20,7 @@ class ServerNav extends React.Component {
     (this.props.currentUser.profilePicUrl === '') ? 
     profilePicUrl = 'https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png' :
     profilePicUrl = this.props.currentUser.profilePicUrl
-
+    
     return (
       <div className="server-nav-container">
         <div className="server-nav-bar-container">
@@ -29,6 +33,7 @@ class ServerNav extends React.Component {
                   <ServerNavItems 
                     server={server}
                     history={this.props.history}
+                    fetchServer = {this.props.fetchServer}
                     key={server.id}
                   />
                 )

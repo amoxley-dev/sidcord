@@ -6,7 +6,7 @@ import ServerNav from "./Server_Nav";
 import { openModal } from "../../actions/modal_actions";
 
 const currentUserServers = state => {
-  if (Object.keys(state.entities.servers).length === 0) return [];
+  if (Object.keys(state.entities.servers).length < state.entities.users[state.session.id].servers.length) return [];
   return state.entities.users[state.session.id].servers.map(serverId => (
     state.entities.servers[serverId]
   ))

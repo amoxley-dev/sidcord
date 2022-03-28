@@ -1,16 +1,13 @@
 import React from "react";
 import { fetchServers } from "../../actions/server_actions";
 
+
 class ServerInfo extends React.Component {
   constructor(props) {
     super(props)
     
 
-  this.serverInfo = this.serverInfo.bind(this)
-  }
-
-  componentDidMount() {
-    this.props.fetchServers()
+    this.serverInfo = this.serverInfo.bind(this)
   }
 
   serverOptions() {
@@ -74,7 +71,20 @@ class ServerInfo extends React.Component {
           <div className="server-channels">
             <div>TEXT CHANNELS</div>
             <ul>
-
+              {
+                this.props.channels.map(channel => {
+                  return (
+                    <li 
+                      key={channel.id}
+                      onClick={() => this.props.history.push(`/channels/${this.props.server.id}/${channel.id}`)}
+                    >
+                      <div>
+                        {channel.channel_name}
+                      </div>
+                    </li>
+                  )
+                })
+              }
             </ul>
           </div>
         </div>

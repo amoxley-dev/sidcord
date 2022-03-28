@@ -4,4 +4,5 @@ if user.profile_picture.attachment == nil
 else
   json.profilePicUrl url_for(user.profile_picture)
 end
+
 json.servers user.servers.map(&:id);
