@@ -1,9 +1,4 @@
 class Api::MessagesController < ApplicationController
-  def index
-    @message = Message.where(channel_id: params[:channel_id])
-    render :index
-  end
-
   def show 
     @message = Message.find(params[:id])
     render :show
