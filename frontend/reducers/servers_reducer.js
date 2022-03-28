@@ -3,7 +3,6 @@ import { RECEIVE_SERVER_MEMBERSHIP, REMOVE_SERVER_MEMBERSHIP } from "../actions/
 import { LOGOUT_CURRENT_USER } from "../actions/session_actions";
 
 const serversReducer = (state={}, action) => {
-  console.log(action)
   Object.freeze(state);
 
   let newState
@@ -11,7 +10,6 @@ const serversReducer = (state={}, action) => {
     case RECEIVE_SERVERS: 
       return Object.assign({}, action.servers)
     case RECEIVE_SERVER:
-      console.log(action);
       const newServer = { [action.server.id]: action.server };
       return Object.assign({}, state, newServer);
     case REMOVE_SERVER: 

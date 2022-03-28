@@ -13,6 +13,8 @@ class Api::ServersController < ApplicationController
     @server = Server.new(server_params)
     @server.owner_id = current_user.id
     if @server.save
+      @channel = Channel.create(channel_name: 'general', server_id: @server.id)
+      @server_memberships = ServerMembership.create(user_id: current_user.id, server_id: @server.id)
       render :show
     else
       render json: @server.errors.full_messages, status: 422
@@ -30,7 +32,6 @@ class Api::ServersController < ApplicationController
 
   def destroy
     @server = Server.find(params[:id])
-    # @current_user = current_user
     if current_user.id == @server.owner_id
       @server.destroy
       render :show

@@ -1,9 +1,10 @@
 import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 import { RECEIVE_SERVER_MEMBERSHIP, REMOVE_SERVER_MEMBERSHIP } from "../actions/server_membership_actions";
-import { REMOVE_SERVER } from "../actions/server_actions";
+import { RECEIVE_SERVER ,REMOVE_SERVER } from "../actions/server_actions";
 import { RECEIVE_USER } from "../actions/user_actions";
 
 const usersReducer = (state={}, action) => {
+
   Object.freeze(state);
   let newState
   switch (action.type) {
@@ -18,6 +19,10 @@ const usersReducer = (state={}, action) => {
     case REMOVE_SERVER_MEMBERSHIP:
       newState = Object.assign({}, state);
       newState[action.user.id] = action.user;
+      return newState;
+    case RECEIVE_SERVER: 
+      newState = Object.assign({}, state);
+      newState[action.server.currentUser.id] = action.server.currentUser;
       return newState;
     case REMOVE_SERVER:
       newState = Object.assign({}, state);
