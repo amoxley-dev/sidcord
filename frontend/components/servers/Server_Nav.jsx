@@ -1,6 +1,6 @@
 import React from "react";
 import ServerNavItems from "./Server_Nav_Items"
-import { Link } from "react-router-dom";
+import { matchPath } from 'react-router'
 
 class ServerNav extends React.Component {
   constructor(props) {
@@ -9,10 +9,20 @@ class ServerNav extends React.Component {
 
   componentDidMount() {
     // this.props.fetchServers();
+    const match = matchPath(this.props.history.location.pathname, {
+      path: `/channels/:serverId/:channelId`
+    })
 
     this.props.currentUser.servers.map(serverId => {
       this.props.fetchServer(serverId)
+        .then(() => {
+          if (match) this.props.fetchServer(match.params.serverId)
+        })
     })
+    console.log("ServerNavMount")
+    // console.log(match.params.serverId)
+    // if (match) this.props.fetchServer(match.params.serverId)
+    // this.props.fetchServer(this.props.match.params.serverId)
   }
 
   render() {
