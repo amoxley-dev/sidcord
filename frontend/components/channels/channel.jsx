@@ -1,5 +1,5 @@
 import React from "react";
-import { matchPath } from 'react-router'
+import ChannelMessages from "../messages/channelMessages";
 
 class Channel extends React.Component {
   constructor(props) {
@@ -7,27 +7,42 @@ class Channel extends React.Component {
   }
 
   componentDidMount() {
-    // console.log("Channel Mount")
+    // const cable = createConsumer("ws://localhost:3000/cable")
+    // const paramsToSend = {
+    //   channel: "ConversationChannel",
+    //   id: this.props.message.channel_id
+    // }
+    
+    // const handlers = {
+    //   received(data) {
+    //     setMessages([...messages, data])
+    //   },
 
-    // const match = matchPath(this.props.history.location.pathname, {
-    //   path: `/channels/:serverId/:channelId`
-    // })
+    //   connected() {
+    //     console.log("connected")
+    //   },
 
-    // if (match) this.props.fetchServer(match.params.serverId)
-    // console.log(this.props)
-    // console.log(match.params.serverId)
-    // this.props.fetchServer(this.props.match.params.serverId)
+    //   disconnected() {
+    //     console.log("disconnected")
+    //   }
+    // }
 
+    // const subscription = cable.subscriptions.create(paramsToSend, handlers)
+
+    // return function cleanup() {
+    //   console.log("unsubbing from ", params.id)
+    //   subscription.unsubscribe()
+    // }
   }
 
   render() {
-    // console.log('rendering')
-    // console.log(this.props.channel)
+
     if (!this.props.channel) return null
 
     return (
       <div className="channel-container">
         <div className="channel-header">
+          <i className="fa-solid fa-hashtag fa-lg" id="channel-message-hashtag"></i>
           <div>{this.props.channel.channel_name}</div>
         </div>
 
@@ -35,6 +50,7 @@ class Channel extends React.Component {
           <div className="messages-container">
             <div className="messages-body">
               messages body
+              <ChannelMessages />
             </div>
             <div className="message-input-container">Message inupt container</div>
           </div>

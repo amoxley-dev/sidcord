@@ -19,10 +19,6 @@ class ServerNav extends React.Component {
           if (match) this.props.fetchServer(match.params.serverId)
         })
     })
-    console.log("ServerNavMount")
-    // console.log(match.params.serverId)
-    // if (match) this.props.fetchServer(match.params.serverId)
-    // this.props.fetchServer(this.props.match.params.serverId)
   }
 
   render() {
