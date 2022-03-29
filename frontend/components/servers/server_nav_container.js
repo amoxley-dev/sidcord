@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { withRouter } from "react-router";
 
 import { fetchServers, fetchServer } from "../../actions/server_actions";
 import { fetchCurrentUser, logout } from "../../actions/session_actions";
@@ -31,4 +32,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(ServerNav);
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(ServerNav));

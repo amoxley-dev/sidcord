@@ -1,4 +1,5 @@
 import React from "react";
+import { matchPath } from 'react-router'
 
 class Channel extends React.Component {
   constructor(props) {
@@ -6,10 +7,22 @@ class Channel extends React.Component {
   }
 
   componentDidMount() {
-    this.props.fetchServer(this.props.match.params.serverId)
+    // console.log("Channel Mount")
+
+    // const match = matchPath(this.props.history.location.pathname, {
+    //   path: `/channels/:serverId/:channelId`
+    // })
+
+    // if (match) this.props.fetchServer(match.params.serverId)
+    // console.log(this.props)
+    // console.log(match.params.serverId)
+    // this.props.fetchServer(this.props.match.params.serverId)
+
   }
 
   render() {
+    // console.log('rendering')
+    // console.log(this.props.channel)
     if (!this.props.channel) return null
 
     return (
