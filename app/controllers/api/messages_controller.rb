@@ -9,7 +9,8 @@ class Api::MessagesController < ApplicationController
     @channel = Channel.find_by(id: params[:channel_id])
     @message.sender_id = current_user.id
     @message.channel_id = @channel.id
-    if @message.save
+    if @message.save!
+      ConversationChannel.broadcast_to(@channel, @message)
       render :show
     else 
       render json: @message.errors.full_messages, status: 422
@@ -18,7 +19,9 @@ class Api::MessagesController < ApplicationController
 
   def update
     @message  = Message.find(params[:id])
+    @channel = Channel.find_by(id: @message.channel_id)
     if (@message && @message.sender_id == current_user.id) && @message.update(message_params)
+      ConversationChannel.broadcast_to(@channel, @message)
       render :show
     else
       render json: @message.errors.full_messages, status: 422
@@ -27,7 +30,9 @@ class Api::MessagesController < ApplicationController
 
   def destroy
     @message = Message.find(params[:id])
+    @channel = Channel.find_by(id: @message.channel_id)
     if @message.sender_id == current_user.id && @message.destroy
+      ConversationChannel.broadcast_to(@channel, @message)
       render :show
     else
       render json: @message.errors.full_messages, status: 422
