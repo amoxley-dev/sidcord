@@ -39,24 +39,53 @@ function ChannelMessages(props) {
     }
   }, [params.channelId, messages])
 
+  const messageProfile = (userId) => {
+    const user = props.users[userId]
+    if (!user) return null
+    let profilePicUrl
+    (user.profilePicUrl === '') ? 
+    profilePicUrl = "https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png" :
+    profilePicUrl = user.profilePicUrl
+
+    return (
+      <img className="message-profile" src={profilePicUrl} alt="message user profile" />
+    )
+  }
+
+  const messageDate = (timestamp) => {
+    const timeStamp = timestamp.slice(0, 10).split("-")
+    const year = timeStamp.shift()
+    timeStamp.push(year)
+    const date = timeStamp.join("/")
+    return (
+      <div className="message-date">{date}</div>
+    )
+  }
+
   return (
-    <div >
+    <div className="channel-messages-container">
       <div className="messages-body">
         <ul>
           {
             props.messages.map(message => {
               return (
-                <li key={message.id}>
-                  <div>{message.body}</div>
-                  <div>{message.created_at}</div>
+                <li className="channel-messages" key={message.id}>
+                  {messageProfile(message.user.id)}
+                  <div className="message-info-container">
+                    <div className="message-info">
+                      <div className="message-username">{message.user.username}</div>
+                      {messageDate(message.created_at)}
+                    </div>
+                    <div className="message-body">{message.body}</div>
+                  </div>
                 </li>
               )
             })
           }
         </ul>
-        <ChannelMessageCreateContainer />
       </div>
-      
+
+        <ChannelMessageCreateContainer />
     </div>
   )
 }

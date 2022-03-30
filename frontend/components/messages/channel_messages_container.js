@@ -4,9 +4,10 @@ import { fetchChannel } from "../../actions/channel_actions";
 import { createMessage } from "../../actions/message_action";
 import ChannelMessages from "./channelMessages";
 
-const mapStateToProps = (state, ownProps) => {
+const mapStateToProps = state => {
   return {
-    messages: Object.values(state.entities.messages)
+    messages: Object.values(state.entities.messages),
+    users: state.entities.users
   };
 };
 
