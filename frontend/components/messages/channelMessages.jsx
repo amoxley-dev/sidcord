@@ -1,13 +1,15 @@
 import React, { useEffect, userRef, useState } from "react";
 import { useParams } from "react-router";
 import { createConsumer } from "@rails/actioncable"
+import ChannelMessageCreateContainer from "./channel_message_create_container";
 
-function ChannelMessages() {
+function ChannelMessages(props) {
   const [messages, setMessages] = useState([])
   const params = useParams()
 
-  console.log(params)
   useEffect(() => {
+    props.fetchChannel(params.channelId)
+
     const cable = createConsumer("ws://localhost:3000/cable")
 
     const paramsToSend = {
@@ -38,7 +40,24 @@ function ChannelMessages() {
   }, [params.channelId, messages])
 
   return (
-    <div>Messages Body</div>
+    <div >
+      <div className="messages-body">
+        <ul>
+          {
+            props.messages.map(message => {
+              return (
+                <li key={message.id}>
+                  <div>{message.body}</div>
+                  <div>{message.created_at}</div>
+                </li>
+              )
+            })
+          }
+        </ul>
+        <ChannelMessageCreateContainer />
+      </div>
+      
+    </div>
   )
 }
 

@@ -5,6 +5,7 @@
   flex-direction: column;
   background-color: #36393f;
   box-sizing: border-box;
+  font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
 }
 
 .channel-header {
@@ -14,6 +15,14 @@
   border-bottom: 1px solid #292b2f;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
   color: white;
+  padding: 0 8px;
+  font-size: 16px;
+  z-index: 2;
+}
+
+.channel-header > svg {
+  margin: 0 8px;
+  color: #72767d;
 }
 
 .channel-content-container {
@@ -37,6 +46,13 @@
   height: calc(100% - 68px);
 }
 
+// .message-form-container {
+//   height: 68px;
+//   position: relative;
+//   padding-left: 16px;
+//   padding-right: 16px;
+//   margin-top: -8px;
+// }
 
 .users-list-container {
   overflow: hidden scroll;
@@ -47,21 +63,28 @@
   color: #8e9297;
 }
 
-
-.message-input-container {
-  height: 68px;
-  position: relative;
-  padding-left: 16px;
-  padding-right: 16px;
-  margin-top: -8px;
+.users-list-container > div {
+  padding: 24px 8px 0 16px;
+  height: 40px;
+  font-family: 'ginto-normal', "Whitney", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-size: 12px;
+  line-height: 16px;
+  letter-spacing: .25px;
+  font-weight: 600;
 }
 
 .server-user-info {
   display: flex;
+  align-items: center;
+  border-radius: 4px;
+  height: 42px;
+  padding: 0 8px;
 }
 
 .server-user-info > img {
   width: 32px;
   height: 32px;
   border-radius: 50%;
+  margin-right: 12px;
+  line-height: 20px;
 }

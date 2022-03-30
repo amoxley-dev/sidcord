@@ -6,7 +6,7 @@ export const fetchMessage = messageId => {
 };
 
 export const createMessage = (channelId, message) => {
-  $.ajax({
+  return $.ajax({
     method: 'POST',
     url: `api/channels/${channelId}/messages`,
     data: { message: message }

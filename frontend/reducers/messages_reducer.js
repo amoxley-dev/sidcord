@@ -1,4 +1,5 @@
 import { RECEIVE_MESSAGE, REMOVE_MESSAGE } from "../actions/message_action";
+import { RECEIVE_CHANNEL } from "../actions/channel_actions";
 
 const messagesReducer = (state={}, action) => {
   Object.freeze(state)
@@ -13,6 +14,9 @@ const messagesReducer = (state={}, action) => {
       newState - Object.assign({}, state);
       delete newState[action.messageId];
       return newState;
+    case RECEIVE_CHANNEL:
+      if (action.channel.messages) return action.channel.messages;
+      return {}
     default:
       return state;
   }

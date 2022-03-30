@@ -18,22 +18,22 @@ const removeMessage = messageId => {
 }
 
 export const fetchMessage = messageId => dispatch => {
-  APIUtil.fetchMessage(messageId)
+  return APIUtil.fetchMessage(messageId)
     .then(message => dispatch(receiveMessage(message)))
 };
 
-export const createMessage = (channelId, message) => {
-  APIUtil.createMessage(channelId, message)
+export const createMessage = (channelId, message) => dispatch => {
+  return APIUtil.createMessage(channelId, message)
     .then(message => dispatch(receiveMessage(message)))
 };
 
-export const updateMessage = message => {
-  APIUtil.updateMessage(message)
+export const updateMessage = message => dispatch =>{
+  return APIUtil.updateMessage(message)
     .then(message => dispatch(receiveMessage(message)))
 }
 
-export const deleteMessage = messageId => {
-  APIUtil.deleteMessage(messageId)
+export const deleteMessage = messageId => dispatch => {
+  return APIUtil.deleteMessage(messageId)
     .then(message => dispatch(removeMessage(message)))
 }
 
