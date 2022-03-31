@@ -11,7 +11,8 @@ function ChannelMessages(props) {
   useEffect(() => {
     props.fetchChannel(params.channelId)
 
-    const cable = createConsumer("wss://sidcord-1.herokuapp.com/cable")
+    const cable = createConsumer("ws://localhost:3000/cable")
+    // const cable = createConsumer("wss://sidcord-1.herokuapp.com/cable")
 
     const paramsToSend = {
       channel: "ConversationChannel",
@@ -71,7 +72,7 @@ function ChannelMessages(props) {
           {
             props.messages.map(message => {
               return (
-                <li className="channel-messages" key={message.id * message.body.length * Math.random(10000)}>
+                <li className="channel-message" key={message.id * message.body.length * Math.random(10000)} id={`message-${message.id}`}>
                   {messageProfile(message.user.id)}
                   <div className="message-info-container">
                     <div className="message-info">
