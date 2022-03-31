@@ -1,7 +1,7 @@
 import { connect } from "react-redux";
 
 import { fetchChannel } from "../../actions/channel_actions";
-import { createMessage } from "../../actions/message_action";
+import { createMessage, updateMessage } from "../../actions/message_action";
 import ChannelMessages from "./channelMessages";
 
 const mapStateToProps = state => {
@@ -14,7 +14,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
   return {
     fetchChannel: channelId => dispatch(fetchChannel(channelId)),
-    createMessage: (channelId, message) => dispatch(createMessage(channelId, message))
+    createMessage: (channelId, message) => dispatch(createMessage(channelId, message)),
+    updateMessage: message => dispatch(updateMessage(message))
   };
 };
 

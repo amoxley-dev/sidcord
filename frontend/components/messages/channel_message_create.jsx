@@ -6,9 +6,8 @@ function ChannelMessageCreate(props) {
   const params = useParams()
 
   const handleSubmit = (e) => {
-    e.preventDefault;
-    e.stopPropogation
-    // console.log(body)
+    e.preventDefault();
+    e.stopPropagation();
     let message = { body: body }
     props.createMessage(params.channelId, message)
     setBody("")

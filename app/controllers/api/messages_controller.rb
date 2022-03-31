@@ -18,7 +18,7 @@ class Api::MessagesController < ApplicationController
   end
 
   def update
-    @message  = Message.find(params[:id])
+    @message = Message.find(params[:id])
     @channel = Channel.find_by(id: @message.channel_id)
     if (@message && @message.sender_id == current_user.id) && @message.update(message_params)
       ConversationChannel.broadcast_to(@channel, @message)

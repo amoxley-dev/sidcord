@@ -2,6 +2,7 @@ import React, { useEffect, userRef, useState } from "react";
 import { useParams } from "react-router";
 import { createConsumer } from "@rails/actioncable"
 import ChannelMessageCreateContainer from "./channel_message_create_container";
+import MessageBodyContainer from "./message_body_container";
 
 function ChannelMessages(props) {
   const [messages, setMessages] = useState([])
@@ -17,8 +18,10 @@ function ChannelMessages(props) {
       id: params.channelId
     }
 
+    console.log(messages)
     const handlers = {
       received(data) {
+        console.log(data)
         setMessages([...messages, data])
       },
 
@@ -32,7 +35,8 @@ function ChannelMessages(props) {
     }
 
     const subscription = cable.subscriptions.create(paramsToSend, handlers)
-
+    
+    console.log("end of useEffect")
     return function cleanup() {
       console.log("unsubbing from ", params.channelId)
       subscription.unsubscribe()
@@ -62,21 +66,25 @@ function ChannelMessages(props) {
     )
   }
 
+  console.log(props.messages)
   return (
     <div className="channel-messages-container">
       <div className="messages-body">
         <ul>
           {
             props.messages.map(message => {
+              console.log(message)
               return (
-                <li className="channel-messages" key={message.id}>
+                <li className="channel-messages" key={message.id * message.body.length * Math.random(10000)}>
                   {messageProfile(message.user.id)}
                   <div className="message-info-container">
                     <div className="message-info">
                       <div className="message-username">{message.user.username}</div>
                       {messageDate(message.created_at)}
                     </div>
-                    <div className="message-body">{message.body}</div>
+                    <div className="message-body-container" id={message.id}>
+                        <MessageBodyContainer message={message} />
+                    </div>
                   </div>
                 </li>
               )

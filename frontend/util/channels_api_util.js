@@ -9,7 +9,7 @@ export const createChannel = (channel, serverId) => {
   return $.ajax({
     method: 'POST',
     url: `api/servers/${serverId}/channels/`,
-    data: { channel }
+    data: { channel: channel }
   });
 };
 
@@ -17,7 +17,7 @@ export const updateChannel = channel => {
   return $.ajax({
     method: 'PATCH',
     url: `api/channels/${channel.id}`,
-    data: { channel }
+    data: { channel: channel }
   });
 };
 
