@@ -33,6 +33,7 @@ gem 'jquery-rails'
 gem 'rails-ujs'
 gem 'turbolinks'
 gem 'aws-sdk-s3'
+gem 'redis'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
