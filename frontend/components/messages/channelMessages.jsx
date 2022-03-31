@@ -18,7 +18,6 @@ function ChannelMessages(props) {
       id: params.channelId
     }
 
-    console.log(messages)
     const handlers = {
       received(data) {
         console.log(data)
@@ -36,7 +35,6 @@ function ChannelMessages(props) {
 
     const subscription = cable.subscriptions.create(paramsToSend, handlers)
     
-    console.log("end of useEffect")
     return function cleanup() {
       console.log("unsubbing from ", params.channelId)
       subscription.unsubscribe()
@@ -66,14 +64,12 @@ function ChannelMessages(props) {
     )
   }
 
-  console.log(props.messages)
   return (
     <div className="channel-messages-container">
       <div className="messages-body">
         <ul>
           {
             props.messages.map(message => {
-              console.log(message)
               return (
                 <li className="channel-messages" key={message.id * message.body.length * Math.random(10000)}>
                   {messageProfile(message.user.id)}
