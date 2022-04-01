@@ -9,12 +9,10 @@ function MessageBody(props) {
       const messageContainer= document.querySelector(`#message-${props.message.id}`);
       messageContainer.classList.add("editing");
 
-      const prevBody = body;
-
       const close = (e) => {
         if (e.keyCode === 27) {
           setEdit(!edit)
-          setBody(prevBody)
+          setBody(props.message.body)
         }
       };
 
@@ -62,7 +60,12 @@ function MessageBody(props) {
         <form onSubmit={(e) => handleSubmit(e)} className="channel-message-edit-form">
           <input type="text" value={body} onChange={(e) => setBody(e.currentTarget.value)}/>
           <div className="message-edit-footer">
-            escape to cancel • enter to <span onClick={(e) => handleSubmit(e)}>save</span>
+            escape to <span
+              onClick={() => {
+                setBody(props.message.body)
+                setEdit(!edit)
+              }}  
+            >cancel</span> • enter to <span onClick={(e) => handleSubmit(e)}>save</span>
           </div>
         </form>
       </div>
