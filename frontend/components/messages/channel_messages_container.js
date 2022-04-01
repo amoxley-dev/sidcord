@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 
 import { fetchChannel } from "../../actions/channel_actions";
 import { createMessage, updateMessage } from "../../actions/message_action";
-import ChannelMessages from "./channelMessages";
+import ChannelMessages from "./channel_messages";
 
 const mapStateToProps = state => {
   return {
