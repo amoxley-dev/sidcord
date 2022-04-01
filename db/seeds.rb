@@ -16,7 +16,7 @@ ActiveRecord::Base.transaction do
   demo = User.create!(email: 'demo@gmail.com', username: 'demo', tag: '0001', password: 'password')
   test1 = User.create!(email: 'test1@gmail.com', username: 'test1', tag: '0002', password: 'password')
   test2 = User.create!(email: 'test2@gmail.com', username: 'test2', tag: '0003', password: 'password')
-  luffy = User.create!(email: 'luffy@gmail.com', username: 'Straw Hat', tag: '0004', password: 'password')
+  luffy = User.create!(email: 'luffy@gmail.com', username: 'Straw Hat', tag: '0004', password: 'password', profile_picture_url: 'https://sidcord-dev.s3.us-west-1.amazonaws.com/luffy.png' )
   zoro = User.create!(email: 'zoro@gmail.com', username: 'Pirate Hunter', tag: '0005', password: 'password')
   nami = User.create!(email: 'nami@gmail.com', username: 'Ship Navigator', tag: '0006', password: 'password')
   usopp = User.create!(email: 'usopp@gmail.com', username: 'SogeKing', tag: '0007', password: 'password')
@@ -26,8 +26,6 @@ ActiveRecord::Base.transaction do
   franky = User.create!(email: 'franky@gmail.com', username: 'Cyborg', tag: '0011', password: 'password')
   brooke = User.create!(email: 'brooke@gmail.com', username: 'Dead Bones', tag: '0012', password: 'password')
   jimbei = User.create!(email: 'jimbei@gmail.com', username: 'First Son Of The Sea', tag: '0013', password: 'password')
-
-  # luffy.profile_picture.attach('https://sidcord-dev.s3.us-west-1.amazonaws.com/luffy.png')
 
   server_1 = Server.create!(server_name: 'Demo Server', public: true, owner_id: demo.id)
   server_2 = Server.create!(server_name: 'Anonymous Server', public: false, owner_id: demo.id)

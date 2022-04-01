@@ -1,8 +1,8 @@
 json.extract! user, :id, :email, :username, :tag
-if user.profile_picture.attachment == nil 
+if user.profile_picture_url == nil 
   json.profilePicUrl ""
 else
-  json.profilePicUrl url_for(user.profile_picture)
+  json.profilePicUrl user.profile_picture_url
 end
 
 json.servers user.servers.map(&:id);
