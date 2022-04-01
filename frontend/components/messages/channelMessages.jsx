@@ -11,8 +11,8 @@ function ChannelMessages(props) {
   useEffect(() => {
     props.fetchChannel(params.channelId)
 
-    const cable = createConsumer("ws://localhost:3000/cable")
-    // const cable = createConsumer("wss://sidcord-1.herokuapp.com/cable")
+    // const cable = createConsumer("ws://localhost:3000/cable")
+    const cable = createConsumer("wss://sidcord-1.herokuapp.com/cable")
 
     const paramsToSend = {
       channel: "ConversationChannel",
