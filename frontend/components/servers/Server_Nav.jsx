@@ -22,10 +22,6 @@ class ServerNav extends React.Component {
   }
 
   render() {
-    // let profilePicUrl
-    // (this.props.currentUser.profilePicUrl === '') ? 
-    // profilePicUrl = 'https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png' :
-    // profilePicUrl = this.props.currentUser.profilePicUrl
     
     return (
       <div className="server-nav-container">

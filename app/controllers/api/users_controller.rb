@@ -15,6 +15,7 @@ class Api::UsersController < ApplicationController
     @user = User.new(user_params)
     
     @user.tag = tag_creator
+    @user.profile_picture.attach("")
     if @user.save
       login!(@user)
       render :show

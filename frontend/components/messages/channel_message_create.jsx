@@ -17,7 +17,6 @@ function ChannelMessageCreate(props) {
     <div className="message-form-container" >
       <form className="message-form" onSubmit={e => handleSubmit(e)}>
         <input type="text" value={body} onChange={(e) => setBody(e.currentTarget.value)}/>
-        {/* <button type="submit">Create Message</button> */}
       </form>
     </div>
   )

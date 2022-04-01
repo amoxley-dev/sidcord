@@ -75,6 +75,25 @@
   color: #8e9297;
 }
 
+.server-nav-channels-header {
+  display: flex;
+}
+
+.server-nav-channels-plus {
+  cursor: pointer;
+}
+
+.server-nav-channel {
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.server-nav-channel:hover {
+  background-color: #3c3f45;
+}
+
 .user-options-icon {
   width: 32px;
   height: 32px;

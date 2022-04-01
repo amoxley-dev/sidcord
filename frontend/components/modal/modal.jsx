@@ -1,12 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router'
 
 import { closeModal } from '../../actions/modal_actions';
 import ServerFormContainer from '../servers/server_form_container';
 import ServerPublicContainer from '../servers/server_public_form_container';
 import ServerCreateFormContainer from '../servers/server_create_form_container';
 import ServerIndexContainer from '../servers/server_index_container';
-import UserOptions from '../user/user_options_container';
+import UserOptionsContainer from '../user/user_options_container';
+import CreateChannelContainer from '../channels/create_channel_container';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -18,6 +20,7 @@ class Modal extends React.Component {
     this.publicTrue = this.publicTrue.bind(this);
     this.publicFalse = this.publicFalse.bind(this);
   }
+
 
   publicTrue() {
     this.setState({serverPublic: true});
@@ -50,7 +53,10 @@ class Modal extends React.Component {
         component = <ServerIndexContainer />
         break;
       case 'userOptions':
-        component = <UserOptions />
+        component = <UserOptionsContainer />
+        break;
+      case 'createChannel':
+        component = <CreateChannelContainer />
         break;
       default:
         return null;
@@ -82,4 +88,4 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Modal);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Modal));

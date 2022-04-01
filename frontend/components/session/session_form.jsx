@@ -190,16 +190,19 @@ class SessionForm extends React.Component {
     this.props.formType === 'signup' ? buttonText = 'Continue' : buttonText = 'Login'
 
     return (
-      <div className="form-container">
-        {this.formHeader()}
-        <form onSubmit={this.handleSubmit} className="session-form">
-          {this.email()}
-          {this.username()}
-          {this.password()}
-          <button type="submit" className="session-button">{buttonText}</button>
-          {this.demoUser()}
-          {this.link()}
-        </form>
+      <div>
+        <div className="form-container">
+          {this.formHeader()}
+          <form onSubmit={this.handleSubmit} className="session-form">
+            {this.email()}
+            {this.username()}
+            {this.password()}
+            <button type="submit" className="session-button">{buttonText}</button>
+            {this.demoUser()}
+            {this.link()}
+          </form>
+        </div>
+        <div className="session-underlay"></div>
       </div>
     )
   }

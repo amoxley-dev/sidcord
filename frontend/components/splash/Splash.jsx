@@ -12,7 +12,10 @@ class Splash extends React.Component {
 
     return (
       <nav className="splash-header-container">
-        <span className="splash-logo">Sidcord</span>
+        <div className="splash-logo">
+          <span className="splash-logo-discord"><i className="fab fa-discord"></i></span>
+          <span >Sidcord</span>
+        </div>
         <ul className="nav-links">
           <li><a href="https://github.com/amoxley-dev/sidcord">Github</a></li>
           <li><a href="#">LinkedIn</a></li>
@@ -26,10 +29,10 @@ class Splash extends React.Component {
   render() {
     return (
       <div className="splash">
-        <header>
+        <header className="splash-content">
           {this.navBar()}
         </header>
-        <main>
+        <main className="splash-content">
           <div className="splash-main-content">
             <h1 className="splash-h1">IMAGINE A PLACE...</h1>
             <div className="splash-description">...where you can belong to a school club, a gaming group, or a worldwide art community. 
@@ -41,6 +44,12 @@ class Splash extends React.Component {
               onClick={() => { this.props.history.push('/login') }}>Open Sidcord in your browser</button>
           </div>
         </main>
+        <div className="splash-mountains">
+        </div>
+        <div className="splash-pink-bird">
+        </div>
+        <div className="splash-yellow-glasses">
+        </div>
       </div>
     )
   }

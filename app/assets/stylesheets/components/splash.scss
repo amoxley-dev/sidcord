@@ -2,6 +2,12 @@ html, body {
   background: #36393f;
 }
 
+.splash {
+  background: #404eed;
+}
+
+
+
 .splash button {
   border-radius: 40px;
   background-color: white;
@@ -11,6 +17,7 @@ html, body {
   transition-property: color,box-shadow;
   transition-duration: .2s;
   transition-timing-function: ease-in-out;
+
 }
 
 .splash button:hover {
@@ -28,6 +35,7 @@ html, body {
   text-rendering: optimizeLegibility;
   font-family: "Whitney", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
   font-size: 100%;
+
 }
 
 .splash-h1 {
@@ -37,6 +45,7 @@ html, body {
   font-weight: 800;
   line-height: 95%;
   text-rendering: geometricPrecision;
+
 }
 
 .splash-description {
@@ -46,6 +55,7 @@ html, body {
   font-size: 20px;
   margin-top: 40px;
   line-height: 1.625;
+
 }
 
 .splash-button {
@@ -54,6 +64,7 @@ html, body {
   line-height: 24px;
   font-size: 20px;
   font-weight: bold;
+
 }
 
 .splash-header-container {
@@ -62,23 +73,31 @@ html, body {
   align-items: center;
   width: 100vw;
   height: 60px;
+
 }
 
 .splash-logo {
   color: white;
   font-family: 'ginto-nord-black', "Whitney", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+
+}
+
+.splash-logo-discord {
+  font-size: 24px;
+  padding-right: 6px;
 }
 
 .nav-button {
-  
   font-size: 14px;
   padding: 7px 16px;
+
 }
 
 .nav-links {
   display: flex;
   justify-content: space-around;
   width: 20%;
+
 }
 
 .nav-links > li > a {
@@ -92,3 +111,19 @@ html, body {
 .nav-links > li > a:hover {
   text-decoration: underline;
 }
+
+// .splash-mountains {
+//   background-image: url("");
+// }
+
+// .splash-pink-bird {
+//   position: relative;
+// }
+
+// .splash-yellow-glasses {
+//   position: absolute;
+//   background-image: url("https://sidcord-dev.s3.us-west-1.amazonaws.com/splash_yellow_sunglasses.svg");
+//   height: 500px;
+//   background-position: center;
+//   background-repeat: no-repeat;
+// }

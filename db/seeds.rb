@@ -27,6 +27,8 @@ ActiveRecord::Base.transaction do
   brooke = User.create!(email: 'brooke@gmail.com', username: 'Dead Bones', tag: '0012', password: 'password')
   jimbei = User.create!(email: 'jimbei@gmail.com', username: 'First Son Of The Sea', tag: '0013', password: 'password')
 
+  # luffy.profile_picture.attach('https://sidcord-dev.s3.us-west-1.amazonaws.com/luffy.png')
+
   server_1 = Server.create!(server_name: 'Demo Server', public: true, owner_id: demo.id)
   server_2 = Server.create!(server_name: 'Anonymous Server', public: false, owner_id: demo.id)
   server_3 = Server.create!(server_name: 'Straw Hat\'s Server', public: true, owner_id: luffy.id)
