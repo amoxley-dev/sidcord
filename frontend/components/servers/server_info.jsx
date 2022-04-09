@@ -5,7 +5,6 @@ import { fetchServers } from "../../actions/server_actions";
 class ServerInfo extends React.Component {
   constructor(props) {
     super(props)
-    
 
     this.serverInfo = this.serverInfo.bind(this)
   }
@@ -14,39 +13,34 @@ class ServerInfo extends React.Component {
     let dropwdown = document.querySelector('.server-dropdown')
   }
 
-  handleDropdownClick(method) {
+  handleLeave() {
     const membership = 
-        { 
-          user_id: this.props.currentUser.id, 
-          server_id: this.props.server.id 
-        }
-    if (method === 'delete') {
-      this.props.deleteServerMembership(membership)
-      this.props.deleteServer(this.props.server.id)
-    } else {
-      this.props.deleteServerMembership(membership)
+    { 
+      user_id: this.props.currentUser.id, 
+      server_id: this.props.server.id 
     }
-    this.props.history.push(`/channels/@me`)
+    this.props.deleteServerMembership(membership);
+    this.props.history.push(`/channels/@me`);
   }
 
   dropdown() {
     
-    let dropwdown = ''
+    let dropdown = ''
     if (this.props.server.owner_id === this.props.currentUser.id) {
-      dropwdown = (
-        <div onClick={() => this.handleDropdownClick('delete')}>
-          Delete Server
+      dropdown = (
+        <div onClick={() => this.props.openModal('serverEdit')}>
+          Server Settings
         </div>
       )
     } else {
-      dropwdown = (
-        <div onClick={() => this.handleDropdownClick('leave')}>
+      dropdown = (
+        <div onClick={() => this.handleLeave('leave')}>
           Leave Server
         </div>
       )
     }
 
-    return dropwdown
+    return dropdown
   }
 
   friendsList() {

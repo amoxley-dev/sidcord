@@ -9,6 +9,7 @@ import ServerCreateFormContainer from '../servers/server_create_form_container';
 import ServerIndexContainer from '../servers/server_index_container';
 import UserOptionsContainer from '../user/user_options_container';
 import CreateChannelContainer from '../channels/create_channel_container';
+import ServerEditContainer from '../servers/server_edit_container';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -19,8 +20,9 @@ class Modal extends React.Component {
 
     this.publicTrue = this.publicTrue.bind(this);
     this.publicFalse = this.publicFalse.bind(this);
+    
   }
-
+  
 
   publicTrue() {
     this.setState({serverPublic: true});
@@ -33,6 +35,7 @@ class Modal extends React.Component {
   
   render() {
     let component;
+    // console.log(this.props)
     switch (this.props.modal) {
       case 'serverForm':
         component = <ServerFormContainer />;
@@ -51,6 +54,9 @@ class Modal extends React.Component {
         break;
       case 'serverIndex':
         component = <ServerIndexContainer />
+        break;
+      case 'serverEdit':
+        component = <ServerEditContainer history={this.props.history}/>
         break;
       case 'userOptions':
         component = <UserOptionsContainer />
