@@ -5,11 +5,12 @@ import { withRouter } from 'react-router'
 import { closeModal } from '../../actions/modal_actions';
 import ServerFormContainer from '../servers/server_form_container';
 import ServerPublicContainer from '../servers/server_public_form_container';
-import ServerCreateFormContainer from '../servers/server_create_form_container';
 import ServerIndexContainer from '../servers/server_index_container';
+import ServerEditContainer from '../servers/server_edit_container';
+import ServerCreateFormContainer from '../servers/server_create_form_container';
 import UserOptionsContainer from '../user/user_options_container';
 import CreateChannelContainer from '../channels/create_channel_container';
-import ServerEditContainer from '../servers/server_edit_container';
+import ChannelEditContainer from '../channels/edit_channel_container';
 
 class Modal extends React.Component {
   constructor(props) {
@@ -63,6 +64,9 @@ class Modal extends React.Component {
         break;
       case 'createChannel':
         component = <CreateChannelContainer />
+        break;
+      case 'editChannel':
+        component = <ChannelEditContainer history={this.props.history}/>
         break;
       default:
         return null;
