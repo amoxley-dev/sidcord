@@ -7,6 +7,7 @@ class ServerInfo extends React.Component {
     super(props)
 
     this.serverInfo = this.serverInfo.bind(this)
+    this.friendsList = this.friendsList.bind(this)
   }
 
   serverOptions() {
@@ -45,7 +46,13 @@ class ServerInfo extends React.Component {
 
   friendsList() {
     return (
-      <div>Freinds List</div>
+      <div>
+        {
+          this.props.dmServers.map(dmServer => {
+            return <div>{dmServer.id}</div>
+          })
+        }
+      </div>
     )
   }
 

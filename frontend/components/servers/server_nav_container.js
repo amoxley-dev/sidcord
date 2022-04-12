@@ -4,6 +4,7 @@ import { withRouter } from "react-router";
 import { fetchServers, fetchServer } from "../../actions/server_actions";
 import { fetchCurrentUser, logout } from "../../actions/session_actions";
 import ServerNav from "./Server_Nav";
+import { fetchDmServers, fetchDmServer } from "../../actions/dm_server_actions";
 import { openModal } from "../../actions/modal_actions";
 
 const currentUserServers = state => {
@@ -27,6 +28,8 @@ const mapDispatchToProps = dispatch => {
     fetchServers: () => dispatch(fetchServers()),
     fetchServer: serverId => dispatch(fetchServer(serverId)),
     fetchCurrentUser: userId => dispatch(fetchCurrentUser(userId)),
+    fetchDmServers: () => dispatch(fetchDmServers()),
+    fetchDmServer: dmServerId => dispatch(fetchDmServer(dmServerId)),
     logout: () => dispatch(logout()),
     openModal: modal => dispatch(openModal(modal))
   };

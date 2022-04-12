@@ -6,6 +6,7 @@ import { fetchServers, fetchServer, createServer, editServer, deleteServer } fro
 import { createServerMembership, deleteServerMembership } from "./util/server_membership_api_util";
 import { fetchChannel, createChannel, updateChannel, deleteChannel } from "./util/channels_api_util";
 import { fetchMessage, createMessage, updateMessage, deleteMessage } from "./util/messages_api_util";
+import { fetchDmServers, fetchDmServer, createDmServer, deleteDmServer } from "./util/dm_server_api_util";
 import configureStore from "./store/store"
 import Root from "./components/Root"
 
@@ -41,7 +42,11 @@ document.addEventListener("DOMContentLoaded", () => {
   window.fetchMessage = fetchMessage;
   window.createMessage = createMessage;
   window.updateMessage = updateMessage;
-  window.deleteMessage = deleteMessage
+  window.deleteMessage = deleteMessage;
+  window.fetchDmServers = fetchDmServers;
+  window.fetchDmServer = fetchDmServer;
+  window.createDmServer = createDmServer;
+  window.deleteDmServer = deleteDmServer;
   window.getState = store.getState;
   window.dispatch = store.dispatch;
   // Test End
