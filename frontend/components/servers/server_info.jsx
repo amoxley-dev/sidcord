@@ -49,7 +49,7 @@ class ServerInfo extends React.Component {
       <div>
         {
           this.props.dmServers.map(dmServer => {
-            return <div>{dmServer.id}</div>
+            return <div key={dmServer.id}>{dmServer.id}</div>
           })
         }
       </div>
@@ -136,7 +136,8 @@ class ServerInfo extends React.Component {
     profilePicUrl = this.props.currentUser.profilePicUrl
 
     let infoDisplay
-    (this.props.location.pathname === '/channels/@me') ?
+    console.log(this.props);
+    (this.props.location.pathname === '/channels/@me' || this.props.location.pathname === '/channels/@me/:dmServerId') ?
     infoDisplay = this.friendsList :
     infoDisplay = this.serverInfo
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { 
   Route,
   Switch,
@@ -14,17 +14,22 @@ import SignupFormContainer from "./session/signup_form_container";
 import ServerNavContainer from "./servers/server_nav_container";
 import ServerInfoContainer from "./servers/server_info_container";
 import ChannelContainer from "./channels/channel_container";
+import DmServerContainer from "./dm_servers/dm_server_container";
+import DmServerInfoContainer from "./dm_servers/dm_server_info_container";
 
 const App = () => (
   <div id='app'>
     <Route path='/' component={modal}></Route>
     <ProtectedRoute path="/channels" component={ServerNavContainer}/>
-    <ProtectedRoute path="/channels/:serverId/:channelId" component={ServerInfoContainer}/>
+    <Switch>
+      <ProtectedRoute path="/channels/@me" component={DmServerInfoContainer} />
+      <ProtectedRoute path="/channels/:serverId/:channelId" component={ServerInfoContainer}/>
+    </Switch>
 
     <Switch>
       <AuthRoute path="/login" component={LoginFormContainer} />
       <AuthRoute path="/signup" component={SignupFormContainer} />
-      <ProtectedRoute path="/channels/@me" component={ServerInfoContainer} />
+      <ProtectedRoute path="/channels/@me/:dmServerId" component={DmServerContainer} />
       <ProtectedRoute 
                 exact path="/channels/:serverId/:channelId" 
                 component={ChannelContainer} 
