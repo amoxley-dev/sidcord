@@ -6,3 +6,4 @@ else
 end
 
 json.servers user.servers.map(&:id);
+# json.dm_servers user.dm_servers.map(&:id);
