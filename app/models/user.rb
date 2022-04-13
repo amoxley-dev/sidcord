@@ -45,6 +45,14 @@ class User < ApplicationRecord
     foreign_key: :owner_id,
     class_name: :DmServer
 
+  has_many :dm_memberships,
+    foreign_key: :user_id,
+    class_name: :DmMembership
+
+  has_many :dm_servers,
+    through: :dm_memberships,
+    source: :dm_server
+
   def self.find_by_credentials(email, password)
     user = User.find_by(email: email)
     return nil unless user

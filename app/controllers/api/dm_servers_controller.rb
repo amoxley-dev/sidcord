@@ -1,8 +1,8 @@
 class Api::DmServersController < ApplicationController
   def index
-    @dm_servers = DmServer.all;
+    # @dm_servers = DmServer.all;
     @current_user = current_user;
-    # @dm_servers = @current_user.dm_servers if (@current_user)
+    @dm_servers = @current_user.dm_servers if (@current_user)
     render :index
   end
 
