@@ -136,7 +136,6 @@ class ServerInfo extends React.Component {
     profilePicUrl = this.props.currentUser.profilePicUrl
 
     let infoDisplay
-    console.log(this.props);
     (this.props.location.pathname === '/channels/@me' || this.props.location.pathname === '/channels/@me/:dmServerId') ?
     infoDisplay = this.friendsList :
     infoDisplay = this.serverInfo

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 
 function DmServer(props) {
-  console.log(props)
+  // console.log(props)
   return (
     <div>
       DM Server Displaying

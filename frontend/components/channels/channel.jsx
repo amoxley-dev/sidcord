@@ -4,10 +4,48 @@ import ChannelMessagesContainer from "../messages/channel_messages_container";
 class Channel extends React.Component {
   constructor(props) {
     super(props)
+
+    this.handleDm = this.handleDm.bind(this);
+    this.dmServerContainer = this.dmServerContainer.bind(this);
   }
 
   componentDidMount() {
 
+  }
+
+  handleDm(user) {
+    // console.log(this.props.dmServers)
+
+    let currentDmUsers = {}
+    this.props.dmServers.map(dmServer => {
+      let userIds = Object.keys(dmServer.users)
+      userIds.map(userId => {
+        if (userId.toString() !== this.props.currentUserId.toString()) {
+          currentDmUsers[userId] = dmServer.id
+        }
+      })
+    })
+
+    if (currentDmUsers[user.id.toString()]) {
+      this.props.history.push(`/channels/@me/${currentDmUsers[user.id.toString()]}`)
+    } else {
+      this.props.createDmServer()
+        .then(res => {
+          let dmMembership = { dm_server_id: res.dmServer.id, user_id: this.props.currentUserId}
+          this.props.createDmMembership(dmMembership)
+          let newDmMembership = { dm_server_id: res.dmServer.id, user_id: user.id}
+          this.props.createDmMembership(newDmMembership)
+            .then(res => {
+              this.props.history.push(`/channels/@me/${res.dmMembership.dm_server_id}`)
+            })
+        })
+    }
+  }
+
+  dmServerContainer(user) {
+    if (user.id.toString() !== this.props.currentUserId.toString()) {
+      return <div className="server-user-dm" onClick={() => this.handleDm(user)}>Direct message</div>
+    }
   }
 
   render() {
@@ -36,6 +74,7 @@ class Channel extends React.Component {
                     <div key={user.id} className="server-user-info">
                       <img src={profilePicUrl} alt="profile picture" />
                       <div>{user.username}</div>
+                      {this.dmServerContainer(user)}
                     </div>
                   )
                 })
