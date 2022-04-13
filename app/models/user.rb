@@ -47,7 +47,8 @@ class User < ApplicationRecord
 
   has_many :dm_memberships,
     foreign_key: :user_id,
-    class_name: :DmMembership
+    class_name: :DmMembership,
+    dependent: :destroy
 
   has_many :dm_servers,
     through: :dm_memberships,
