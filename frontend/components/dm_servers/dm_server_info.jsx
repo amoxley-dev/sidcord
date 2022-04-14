@@ -10,9 +10,31 @@ class ServerInfo extends React.Component {
   friendsList() {
     return (
       <div>
+        <div>DIRECT MESSAGES</div>
         {
           this.props.dmServers.map(dmServer => {
-            return <div key={dmServer.id} onClick={() => this.props.history.push(`/channels/@me/${dmServer.id}`)}>{dmServer.id}</div>
+            let userIds = Object.keys(dmServer.users)
+            let userId = userIds.filter(id => {
+              if (id !== this.props.currentUser.id.toString()) {
+                return id
+              }
+            })
+            const user = dmServer.users[userId[0]]
+            let profilePicUrl
+            (user.profilePicUrl === '') ? 
+            profilePicUrl = 'https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png' :
+            profilePicUrl = user.profilePicUrl
+
+            return (
+              <div 
+                key={dmServer.id} 
+                onClick={() => this.props.history.push(`/channels/@me/${dmServer.id}`)}
+                className="user-info-container"  
+              >
+                <img src={profilePicUrl} alt="profile picture" />
+                <div>{user.username}</div>
+              </div>
+            )
           })
         }
       </div>

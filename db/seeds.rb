@@ -10,8 +10,10 @@ require 'open-uri'
 
 ActiveRecord::Base.transaction do
   User.destroy_all
+  Server.destroy_all
   ActiveRecord::Base.connection.reset_pk_sequence!('users')
   ActiveRecord::Base.connection.reset_pk_sequence!('servers')
+  ActiveRecord::Base.connection.reset_pk_sequence!('dm_servers')
 
   demo = User.create!(email: 'demo@gmail.com', username: 'demo', tag: '0001', password: 'password')
   test1 = User.create!(email: 'test1@gmail.com', username: 'test1', tag: '0002', password: 'password')
@@ -67,4 +69,24 @@ ActiveRecord::Base.transaction do
   server_membership_18 = ServerMembership.create!( user_id: brooke.id, server_id: server_3.id)
   server_membership_19 = ServerMembership.create!( user_id: jimbei.id, server_id: server_3.id)
   server_membership_20 = ServerMembership.create!( user_id: anonymous.id, server_id: server_2.id)
+
+  dm_server_1 = DmServer.create!( owner_id: demo.id )
+  dm_server_2 = DmServer.create!( owner_id: demo.id )
+  dm_server_3 = DmServer.create!( owner_id: demo.id )
+  dm_server_4 = DmServer.create!( owner_id: test1.id )
+  dm_server_5 = DmServer.create!( owner_id: test2.id )
+  dm_server_6 = DmServer.create!( owner_id: luffy.id )
+
+  dm_membership_1 = DmMembership.create!( dm_server_id: dm_server_1.id, user_id: demo.id )
+  dm_membership_2 = DmMembership.create!( dm_server_id: dm_server_1.id, user_id: test1.id )
+  dm_membership_3 = DmMembership.create!( dm_server_id: dm_server_2.id, user_id: demo.id )
+  dm_membership_4 = DmMembership.create!( dm_server_id: dm_server_2.id, user_id: test2.id )
+  dm_membership_5 = DmMembership.create!( dm_server_id: dm_server_3.id, user_id: demo.id )
+  dm_membership_6 = DmMembership.create!( dm_server_id: dm_server_3.id, user_id: zoro.id )
+  dm_membership_7 = DmMembership.create!( dm_server_id: dm_server_4.id, user_id: test1.id )
+  dm_membership_8 = DmMembership.create!( dm_server_id: dm_server_4.id, user_id: luffy.id )
+  dm_membership_9 = DmMembership.create!( dm_server_id: dm_server_5.id, user_id: test2.id )
+  dm_membership_10 = DmMembership.create!( dm_server_id: dm_server_5.id, user_id: sanji.id )
+  dm_membership_11 = DmMembership.create!( dm_server_id: dm_server_6.id, user_id: luffy.id )
+  dm_membership_12 = DmMembership.create!( dm_server_id: dm_server_6.id, user_id: demo.id )
 end
