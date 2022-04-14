@@ -12,4 +12,8 @@ class DmServer < ApplicationRecord
   has_many :users,
     through: :dm_memberships,
     source: :user
+
+  has_many :dm_messages,
+    foreign_key: :dm_server_id,
+    class_name: :DmMessage
 end
