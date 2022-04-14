@@ -8,7 +8,7 @@ import { fetchChannel, createChannel, updateChannel, deleteChannel } from "./uti
 import { fetchMessage, createMessage, updateMessage, deleteMessage } from "./util/messages_api_util";
 import { fetchDmServers, fetchDmServer, createDmServer, deleteDmServer } from "./util/dm_server_api_util";
 import { createDmMembership, deleteDmMembership } from "./util/dm_membership_util";
-import { createDmMessage, updateDmMessage, deleteDmMessage } from "./util/dm_messages_api_util";
+import { fetchDmMessage, createDmMessage, updateDmMessage, deleteDmMessage } from "./util/dm_messages_api_util";
 import configureStore from "./store/store"
 import Root from "./components/Root"
 
@@ -51,7 +51,8 @@ document.addEventListener("DOMContentLoaded", () => {
   window.deleteDmServer = deleteDmServer;
   window.createDmMembership = createDmMembership;
   window.deleteDmMembership = deleteDmMembership;
-  window.createDmMembership = createDmMessage;
+  window.fetchDmMessage = fetchDmMessage  
+  window.createDmMessage = createDmMessage;
   window.updateDmMessage = updateDmMessage;
   window.deleteDmMessage = deleteDmMessage;
   window.getState = store.getState;

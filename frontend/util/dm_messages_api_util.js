@@ -9,7 +9,7 @@ export const createDmMessage = (dmServerId, dmMessage) => {
   return $.ajax({
     method: 'POST',
     url: `api/dm_servers/${dmServerId}/dm_messages`,
-    data: { dmMessage: dmMessage}
+    data: { dm_message: dmMessage}
   })
 };
 
@@ -17,7 +17,7 @@ export const updateDmMessage = dmMessage => {
   return $.ajax({
     method: 'PATCH',
     url: `api/dm_messages/${dmMessage.id}`,
-    data: { dmMessage: dmMessage }
+    data: { dm_message: dmMessage }
   })
 };
 
