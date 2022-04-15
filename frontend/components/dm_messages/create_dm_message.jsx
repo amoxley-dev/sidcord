@@ -4,8 +4,6 @@ import { useParams } from "react-router";
 function CreateDmMessage(props) {
   const [body, setBody] = useState(props.message.body)
   const params = useParams()
-  
-  console.log(props);
 
   const handleSubmit = (e) => {
     e.preventDefault();

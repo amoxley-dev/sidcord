@@ -9,8 +9,10 @@ class ServerInfo extends React.Component {
 
   friendsList() {
     return (
-      <div>
-        <div>DIRECT MESSAGES</div>
+      <div className="dm-users-list-container">
+        <header>
+          <h2>DIRECT MESSAGES</h2>
+        </header>
         {
           this.props.dmServers.map(dmServer => {
             let userIds = Object.keys(dmServer.users)
@@ -29,9 +31,9 @@ class ServerInfo extends React.Component {
               <div 
                 key={dmServer.id} 
                 onClick={() => this.props.history.push(`/channels/@me/${dmServer.id}`)}
-                className="user-info-container"  
+                className="user-info-container dm-server-info-container"  
               >
-                <img src={profilePicUrl} alt="profile picture" />
+                <img src={profilePicUrl} alt="profile picture" className="dm-server-profile"/>
                 <div>{user.username}</div>
               </div>
             )
