@@ -33,6 +33,7 @@ function UserOptions(props) {
   }
 
   const handleSubmit = (e) => {
+    if (props.currentUser.id === 1) return null
     e.preventDefault();
     e.stopPropagation();
 
@@ -71,6 +72,16 @@ function UserOptions(props) {
     }
 
     return usernameBody
+  }
+
+  const demoUser = () => {
+    if (props.currentUser.id === 1) {
+      return (
+        <div className="demo-edit-warning">
+          Editing Disabled For Demo Account
+        </div>
+      ) 
+    }
   }
 
   const emailEditDisplay = () => {
@@ -114,13 +125,12 @@ function UserOptions(props) {
   return (
     <div className="user-options">
       <div className="close-button-circle">
-        <div className="close-button-svg-container">
+        <div className="close-button-svg-container" onClick={() => props.closeModal()}>
           <svg 
             className="close-button-circle-x"
             width="24"
             height="24" 
             viewBox="0 0 24 24"
-            onClick={() => props.closeModal()}
             ><path fill="currentColor" d="M18.4 4L12 10.4L5.6 4L4 5.6L10.4 12L4 18.4L5.6 20L12 13.6L18.4 20L20 18.4L13.6 12L20 5.6L18.4 4Z"></path>
           </svg>
         </div>
@@ -145,6 +155,7 @@ function UserOptions(props) {
           <div>
             {userProfile()}
             {editDisplay()}
+            {demoUser()}
           </div>
         </div>
       </div>

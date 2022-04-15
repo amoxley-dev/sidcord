@@ -10,7 +10,7 @@ class Api::DmMessagesController < ApplicationController
     @dm_message.sender_id = current_user.id
     @dm_message.dm_server_id = @dm_server.id
     if @dm_message.save!
-      DirectMessageChannel.broadcast_to(@dm_message, @dm_message)
+      DirectMessageChannel.broadcast_to(@dm_server, @dm_message)
       render :show
     else
       render json: @dm_message.errors.full_messages, status: 422
@@ -21,7 +21,7 @@ class Api::DmMessagesController < ApplicationController
     @dm_message = DmMessage.find(params[:id])
     @dm_server = DmServer.find_by(id: @dm_message.dm_server_id)
     if (@dm_message && @dm_message.sender_id == current_user.id) && @dm_message.update(dm_message_params)
-      DirectMessageChannel.broadcast_to(@dm_message, @dm_message)
+      DirectMessageChannel.broadcast_to(@dm_server, @dm_message)
       render :show
     else
       render json: @dm_message.errors.full_messages, status: 422
@@ -32,7 +32,7 @@ class Api::DmMessagesController < ApplicationController
     @dm_message = DmMessage.find(params[:id])
     @dm_server = DmServer.find_by(id: @dm_message.dm_server_id)
     if @dm_message.sender_id == current_user.id && @dm_message.destroy
-      DirectMessageChannel.broadcast_to(@dm_message, @dm_message)
+      DirectMessageChannel.broadcast_to(@dm_server, @dm_message)
       render :show
     else
       render json: @dm_message.errors.full_messages, status: 422

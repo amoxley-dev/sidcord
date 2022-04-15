@@ -14,10 +14,14 @@ class ServerNav extends React.Component {
 
     this.props.fetchDmServers();
 
+    
     this.props.currentUser.servers.map(serverId => {
       this.props.fetchServer(serverId)
         .then(() => { //this makes it so that the correct members show up on refresh
-          if (match) this.props.fetchServer(match.params.serverId)
+          if (match && (match.params.serverId !== '@me')) {
+            // console.log(match.params.serverId)
+            this.props.fetchServer(match.params.serverId)
+          }
         })
     })
   }

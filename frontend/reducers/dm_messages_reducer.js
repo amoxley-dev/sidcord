@@ -15,7 +15,7 @@ const dmMessagesReducer = (state = {}, action) => {
       delete newState[action.dmMessageId];
       return newState;
     case RECEIVE_DM_SERVER: 
-      if (action.dmServer.messages) return action.dmServer.messages;
+      if (action.dmServer.dm_messages) return action.dmServer.dm_messages;
       return {};
     default:
       return state;
