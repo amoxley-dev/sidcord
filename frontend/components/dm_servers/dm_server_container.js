@@ -1,9 +1,8 @@
 import { connect } from "react-redux";
 import DmServer from "./dm_server";
-import { fetchDmServers } from "../../actions/dm_server_actions";
+import { fetchDmServers, fetchDmServer } from "../../actions/dm_server_actions";
 
 const getUser = (state, ownProps) => {
-  // console.log(state)
   let dmServer = state.entities.dmServers[ownProps.match.params.dmServerId];
   if (dmServer) {
     let currentUser = state.entities.users[state.session.id];
@@ -28,7 +27,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchDmServers: () => dispatch(fetchDmServers())
+    fetchDmServers: () => dispatch(fetchDmServers()),
+    fetchDmServer: dmServerId => dispatch(fetchDmServer(dmServerId))
   }
 };
 

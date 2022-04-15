@@ -1,28 +1,28 @@
-import React, { useEffect, userRef, useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router";
-import { createConsumer } from "@rails/actioncable"
-import ChannelMessageCreateContainer from "./channel_message_create_container";
-import MessageBodyContainer from "./message_body_container";
+import { createConsumer } from "@rails/actioncable";
+import CreateDmMessageContainer from "./create_dm_message_container";
+import DmMessagesBodyContainer from "./dm_messages_body_container";
 
-function ChannelMessages(props) {
-  const [messages, setMessages] = useState([])
-  const params = useParams()
+function DmMessages(props) {
+  const [dmMessages, setDmMessages] = useState([])
+  const params = useParams();
 
   useEffect(() => {
-    props.fetchChannel(params.channelId)
+    props.fetchDmServer(params.dmServerId)
 
     // const cable = createConsumer("ws://localhost:3000/cable")
     const cable = createConsumer("wss://sidcord-1.herokuapp.com/cable")
-
+    
     const paramsToSend = {
-      channel: "ConversationChannel",
-      id: params.channelId
+      channel: "DirectMessageChannel",
+      id: params.dmServerId
     }
 
     const handlers = {
       received(data) {
         console.log(data)
-        setMessages([...messages, data])
+        setDmMessages([...dmMessages, data])
       },
 
       connected() {
@@ -35,18 +35,19 @@ function ChannelMessages(props) {
     }
 
     const subscription = cable.subscriptions.create(paramsToSend, handlers)
-    
+
     return function cleanup() {
-      console.log("unsubbing from ", params.channelId)
+      console.log("unsubbing from ", params.dmServerId)
       subscription.unsubscribe()
     }
-  }, [params.channelId, messages])
+  }, [params.dmServerId, dmMessages])
 
   const messageProfile = (userId) => {
-    const user = props.users[userId]
+    let user
+    (userId === props.user.id) ? user = props.user : user = props.currentUser
     if (!user) return null
     let profilePicUrl
-    (user.profilePicUrl === '') ? 
+    (user.profilePicUrl === '') ?
     profilePicUrl = "https://sidcord-dev.s3.us-west-1.amazonaws.com/icon_blue.png" :
     profilePicUrl = user.profilePicUrl
 
@@ -66,21 +67,21 @@ function ChannelMessages(props) {
   }
 
   return (
-    <div className="channel-messages-container">
-      <div className="messages-body">
+    <div>
+      <div>
         <ul>
           {
-            props.messages.map(message => {
+            props.dmMessages.map(dmMessage => {
               return (
-                <li className="channel-message" key={message.id * message.body.length * Math.random(10000)} id={`message-${message.id}`}>
-                  {messageProfile(message.user.id)}
+                <li className="channel-message" key={dmMessage.id * dmMessage.body.length * Math.random(10000)} id={`dmMessage-${dmMessage.id}`}>
+                  {messageProfile(dmMessage.user.id)}
                   <div className="message-info-container">
                     <div className="message-info">
-                      <div className="message-username">{message.user.username}</div>
-                      {messageDate(message.created_at)}
+                      <div className="message-username">{dmMessage.user.username}</div>
+                      {messageDate(dmMessage.created_at)}
                     </div>
-                    <div className="message-body-container" id={message.id}>
-                        <MessageBodyContainer message={message} />
+                    <div className="message-body-container" id={dmMessage.id}>
+                      <DmMessagesBodyContainer dmMessage={dmMessage}/>
                     </div>
                   </div>
                 </li>
@@ -90,9 +91,9 @@ function ChannelMessages(props) {
         </ul>
       </div>
 
-        <ChannelMessageCreateContainer />
+      <CreateDmMessageContainer />
     </div>
   )
 }
 
-export default ChannelMessages
+export default DmMessages;
