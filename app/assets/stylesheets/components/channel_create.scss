@@ -1,0 +1,29 @@
+.create-channel-container {
+  position: relative;
+  width: 440px;
+  height: 520px;
+  background-color: #36393f;
+  box-shadow: 0 0 0 1px #20222599, 0 2px 10px 0 #00000033;
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+}
+
+.create-channel-header {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  border-radius: 5px 5px 0 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.create-channel-header > h2 {
+  font-family: 'ginto-normal', "Whitney", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 700;
+  color: white;
+  font-size: 24px;
+  line-height: 30px;
+}
