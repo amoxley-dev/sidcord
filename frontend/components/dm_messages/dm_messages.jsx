@@ -11,8 +11,8 @@ function DmMessages(props) {
   useEffect(() => {
     props.fetchDmServer(params.dmServerId)
 
-    const cable = createConsumer("ws://localhost:3000/cable")
-    // const cable = createConsumer("wss://sidcord-1.herokuapp.com/cable")
+    // const cable = createConsumer("ws://localhost:3000/cable")
+    const cable = createConsumer("wss://sidcord-1.herokuapp.com/cable")
     
     const paramsToSend = {
       channel: "DirectMessageChannel",
