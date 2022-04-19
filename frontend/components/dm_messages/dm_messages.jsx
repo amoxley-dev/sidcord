@@ -21,23 +21,23 @@ function DmMessages(props) {
 
     const handlers = {
       received(data) {
-        console.log(data)
+        // console.log(data)
         setDmMessages([...dmMessages, data])
       },
 
       connected() {
-        console.log("connected")
+        // console.log("connected")
       },
 
       disconnected() {
-        console.log("disconnected")
+        // console.log("disconnected")
       }
     }
 
     const subscription = cable.subscriptions.create(paramsToSend, handlers)
 
     return function cleanup() {
-      console.log("unsubbing from ", params.dmServerId)
+      // console.log("unsubbing from ", params.dmServerId)
       subscription.unsubscribe()
     }
   }, [params.dmServerId, dmMessages])

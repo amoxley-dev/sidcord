@@ -21,23 +21,23 @@ function ChannelMessages(props) {
 
     const handlers = {
       received(data) {
-        console.log(data)
+        // console.log(data)
         setMessages([...messages, data])
       },
 
       connected() {
-        console.log("connected")
+        // console.log("connected")
       },
 
       disconnected() {
-        console.log("disconnected")
+        // console.log("disconnected")
       }
     }
 
     const subscription = cable.subscriptions.create(paramsToSend, handlers)
     
     return function cleanup() {
-      console.log("unsubbing from ", params.channelId)
+      // console.log("unsubbing from ", params.channelId)
       subscription.unsubscribe()
     }
   }, [params.channelId, messages])

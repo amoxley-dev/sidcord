@@ -44,24 +44,6 @@ class Splash extends React.Component {
               onClick={() => { this.props.history.push('/login') }}>Open Sidcord in your browser</button>
           </div>
         </main>
-        <div className="splash-images">
-          <div
-            className="splash-mountains"
-          >
-          </div>
-          {/* <div
-            src="https://sidcord-dev.s3.us-west-1.amazonaws.com/splash_pink_bird.svg" 
-            alt="pink bird"
-            className="pink-bird"
-          > 
-          </div>
-          <div
-            src="https://sidcord-dev.s3.us-west-1.amazonaws.com/splash_yellow_sunglasses.svg" 
-            alt="yellow sunglasses"
-            className="yellow-sunglasses"
-          > 
-          </div> */}
-        </div>
       </div>
     )
   }

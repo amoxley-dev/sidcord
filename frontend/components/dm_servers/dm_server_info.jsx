@@ -45,7 +45,6 @@ class ServerInfo extends React.Component {
   }
 
   serverMe() {
-    console.log(this.props)
     if (this.props.location.pathname === '/channels/@me') {
       return (
         <div className="me-header-container">

@@ -4,7 +4,6 @@ import { createMessage } from "../../actions/message_action";
 import ChannelMessageCreate from "./channel_message_create";
 
 const mapStateToProps = (state, ownProps) => {
-  console.log(ownProps)
   return {
     message: {
       body: ''
