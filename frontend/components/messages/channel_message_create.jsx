@@ -5,6 +5,8 @@ function ChannelMessageCreate(props) {
   const [body, setBody] = useState(props.message.body)
   const params = useParams()
 
+  const channel = props.channels[params.channelId]
+
   const handleSubmit = (e) => {
     e.preventDefault();
     e.stopPropagation();
@@ -16,7 +18,12 @@ function ChannelMessageCreate(props) {
   return (
     <div className="message-form-container" >
       <form className="message-form" onSubmit={e => handleSubmit(e)}>
-        <input type="text" value={body} onChange={(e) => setBody(e.currentTarget.value)}/>
+        <input 
+          type="text" 
+          value={body} 
+          onChange={(e) => setBody(e.currentTarget.value)}
+          placeholder={`Message #${channel.channel_name}`}
+        />
       </form>
     </div>
   )

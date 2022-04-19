@@ -16,7 +16,12 @@ function CreateDmMessage(props) {
   return (
     <div className="message-form-container" >
       <form className="message-form" onSubmit={e => handleSubmit(e)}>
-        <input type="text" value={body} onChange={(e) => setBody(e.currentTarget.value)}/>
+        <input 
+          type="text" 
+          value={body} 
+          onChange={(e) => setBody(e.currentTarget.value)}
+          placeholder={`Message @${props.user.username}`}
+        />
       </form>
     </div>
   )

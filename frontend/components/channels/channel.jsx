@@ -44,7 +44,7 @@ class Channel extends React.Component {
 
   dmServerContainer(user) {
     if (user.id.toString() !== this.props.currentUserId.toString()) {
-      return <div className="server-user-dm" onClick={() => this.handleDm(user)}>Direct message</div>
+      return <div className="server-user-dm" onClick={() => this.handleDm(user)}>Direct Message</div>
     }
   }
 

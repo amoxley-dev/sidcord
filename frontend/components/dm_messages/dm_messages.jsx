@@ -91,7 +91,7 @@ function DmMessages(props) {
         </ul>
       </div>
 
-      <CreateDmMessageContainer />
+      <CreateDmMessageContainer user={props.user}/>
     </div>
   )
 }
