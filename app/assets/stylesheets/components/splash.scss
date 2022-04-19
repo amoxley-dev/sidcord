@@ -2,11 +2,16 @@ html, body {
   background: #36393f;
 }
 
+.splash-container {
+  background-color: #404eed;
+}
+
 .splash {
   background: url(https://sidcord-dev.s3.us-west-1.amazonaws.com/splash.jpg);
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: bottom;
+  height: 100%;
 }
 
 .splash button {

@@ -28,22 +28,24 @@ class Splash extends React.Component {
 
   render() {
     return (
-      <div className="splash">
-        <header className="splash-content">
-          {this.navBar()}
-        </header>
-        <main className="splash-content">
-          <div className="splash-main-content">
-            <h1 className="splash-h1">IMAGINE A PLACE...</h1>
-            <div className="splash-description">...where you can belong to a school club, a gaming group, or a worldwide art community. 
-              Where just you and a handful of friends can spend time together. 
-              A place that makes it easy to talk every day and hang out more often.
+      <div className="splash-container">
+        <div className="splash">
+          <header className="splash-content">
+            {this.navBar()}
+          </header>
+          <main className="splash-content">
+            <div className="splash-main-content">
+              <h1 className="splash-h1">IMAGINE A PLACE...</h1>
+              <div className="splash-description">...where you can belong to a school club, a gaming group, or a worldwide art community. 
+                Where just you and a handful of friends can spend time together. 
+                A place that makes it easy to talk every day and hang out more often.
+              </div>
+              <button 
+                className="splash-button" 
+                onClick={() => { this.props.history.push('/login') }}>Open Sidcord in your browser</button>
             </div>
-            <button 
-              className="splash-button" 
-              onClick={() => { this.props.history.push('/login') }}>Open Sidcord in your browser</button>
-          </div>
-        </main>
+          </main>
+        </div>
       </div>
     )
   }
