@@ -174,5 +174,35 @@
   color: white;
 }
 
+.me-header-container {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  height: 47px;
+  width: 100%;
+  border-bottom: 1px solid #292b2f;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  color: white;
+  padding: 0 8px;
+  font-size: 16px;
+  z-index: 2;
+  font-family: 'ginto-normal', "Whitney", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+  font-weight: 600;
+}
+
+.social-links {
+  padding: 0 10px;
+
+}
+
+.social-links > a {
+  color: #96989d;
+  text-decoration: none;
+  font-size: 24px;
+}
+
+.social-links > a:hover {
+  color: white;
+}
 
 

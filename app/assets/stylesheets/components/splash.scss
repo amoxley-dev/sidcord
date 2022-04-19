@@ -3,10 +3,11 @@ html, body {
 }
 
 .splash {
-  background: #404eed;
+  background: url(https://sidcord-dev.s3.us-west-1.amazonaws.com/splash.jpg);
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: bottom;
 }
-
-
 
 .splash button {
   border-radius: 40px;
@@ -112,18 +113,16 @@ html, body {
   text-decoration: underline;
 }
 
+// .splash-images {
+//   overflow: hidden;
+//   height: 100%;
+//   width: 100%;
+//   // position: absolute;
+// }
 // .splash-mountains {
-//   background-image: url("");
-// }
-
-// .splash-pink-bird {
-//   position: relative;
-// }
-
-// .splash-yellow-glasses {
+//   background: url(https://sidcord-dev.s3.us-west-1.amazonaws.com/splash_mountains.svg);
 //   position: absolute;
-//   background-image: url("https://sidcord-dev.s3.us-west-1.amazonaws.com/splash_yellow_sunglasses.svg");
-//   height: 500px;
-//   background-position: center;
-//   background-repeat: no-repeat;
+//   height: 100%;
+//   width: 100%;
+//   // top: 10px;
 // }

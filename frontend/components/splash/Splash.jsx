@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import mountains from "../../../public/splash_mountains.svg"
 
 class Splash extends React.Component {
   constructor(props) {
@@ -44,11 +44,23 @@ class Splash extends React.Component {
               onClick={() => { this.props.history.push('/login') }}>Open Sidcord in your browser</button>
           </div>
         </main>
-        <div className="splash-mountains">
-        </div>
-        <div className="splash-pink-bird">
-        </div>
-        <div className="splash-yellow-glasses">
+        <div className="splash-images">
+          <div
+            className="splash-mountains"
+          >
+          </div>
+          {/* <div
+            src="https://sidcord-dev.s3.us-west-1.amazonaws.com/splash_pink_bird.svg" 
+            alt="pink bird"
+            className="pink-bird"
+          > 
+          </div>
+          <div
+            src="https://sidcord-dev.s3.us-west-1.amazonaws.com/splash_yellow_sunglasses.svg" 
+            alt="yellow sunglasses"
+            className="yellow-sunglasses"
+          > 
+          </div> */}
         </div>
       </div>
     )
