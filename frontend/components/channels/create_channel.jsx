@@ -40,7 +40,7 @@ function CreateChannel(props) {
           CHANNEL NAME
         </label>
         <input type="text" value={name} onChange={(e) => setName(e.currentTarget.value)}/>
-        <div>
+        <div className="channel-create-footer">
           <div onClick={() => props.closeModal()}>Cancel</div>
           <button type="submit">Create Channel</button>
         </div>
