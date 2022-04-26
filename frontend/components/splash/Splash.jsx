@@ -19,7 +19,7 @@ class Splash extends React.Component {
         <ul className="nav-links">
           <li><a href="https://github.com/amoxley-dev/sidcord" target="_blank">Github</a></li>
           <li><a href="https://www.linkedin.com/in/alex-moxley-3a86a9237/" target="_blank">LinkedIn</a></li>
-          <li><a href="#">Portfolio</a></li>
+          <li><a href="http://www.alexmoxley.com/">Portfolio</a></li>
         </ul>
         <button className="nav-button" onClick={() => { this.props.history.push('/login') }}>{linkText}</button>
       </nav>
