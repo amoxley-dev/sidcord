@@ -29,6 +29,7 @@ ActiveRecord::Base.transaction do
   brooke = User.create!(email: 'brooke@gmail.com', username: 'Dead Bones', tag: '0012', password: 'password')
   jimbei = User.create!(email: 'jimbei@gmail.com', username: 'First Son Of The Sea', tag: '0013', password: 'password')
   anonymous = User.create!(email: 'anonymous@gmail.com', username: 'the hacker', tag: '0014', password: 'password', profile_picture_url: 'https://sidcord-dev.s3.us-west-1.amazonaws.com/anonymous.png')
+  user1 = User.create!(email: 'user@gmail.com', username: 'user1', tag: '0015', password: 'password')
 
   server_1 = Server.create!(server_name: 'Demo Server', public: true, owner_id: demo.id)
   server_2 = Server.create!(server_name: 'Anonymous Server', public: false, owner_id: demo.id)
