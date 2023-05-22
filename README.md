@@ -1,6 +1,7 @@
 # Welcome to Sidcord!
 
-[Sidcord](https://sidcord-1.herokuapp.com/#/) is a Discord clone where users can create servers and live chat with others.
+## IMPORTANT: Site no longer live
+Sidcord is a Discord clone where users can create servers and live chat with others. 
 
 ## Technologies Used
 * Ruby on Rails for the backend
